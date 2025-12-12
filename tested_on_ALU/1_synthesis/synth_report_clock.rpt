@@ -1,0 +1,7 @@
+Clock    : clk
+Source   : clk (port)
+Total FF : 11
+Max Level: 2
+(L1) port clk
+ \_ ... (11 sinks omitted)
+

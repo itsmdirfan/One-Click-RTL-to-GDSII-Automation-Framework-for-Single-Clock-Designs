@@ -1,0 +1,244 @@
+
+Power Net Detected:
+        Voltage	    Name
+             0V	    VSSO
+             0V	    VSS
+          1.62V	    VDDO
+          1.62V	    VDD
+Using Power View: my_analysis_view_setup.
+AAE_INFO: opIsDesignInPostRouteState() is 0
+AAE DB initialization (MEM=1531.7 CPU=0:00:00.0 REAL=0:00:00.0) 
+#################################################################################
+# Design Stage: PreRoute
+# Design Name: source
+# Design Mode: 90nm
+# Analysis Mode: MMMC Non-OCV 
+# Parasitics Mode: No SPEF/RCDB 
+# Signoff Settings: SI Off 
+#################################################################################
+Calculate delays in BcWc mode...
+Start delay calculation (fullDC) (1 T). (MEM=1636.56)
+**WARN: (IMPMSMV-1810):	Net result[7], driver result_reg[7]/Q (cell dfnrq1) voltage 1.62 does not match receiver psign/PAD (cell pc3d01) voltage 2.7 for view my_analysis_view_setup.
+Type 'man IMPMSMV-1810' for more detail.
+**WARN: (IMPMSMV-1810):	Net result[7], driver result_reg[7]/Q (cell dfnrq1) voltage 1.62 does not match receiver presult_7/PAD (cell pc3d01) voltage 2.7 for view my_analysis_view_setup.
+Type 'man IMPMSMV-1810' for more detail.
+**WARN: (IMPMSMV-1810):	Net result[6], driver result_reg[6]/Q (cell dfnrq1) voltage 1.62 does not match receiver presult_6/PAD (cell pc3d01) voltage 2.7 for view my_analysis_view_setup.
+Type 'man IMPMSMV-1810' for more detail.
+**WARN: (IMPMSMV-1810):	Net result[5], driver result_reg[5]/Q (cell dfnrq1) voltage 1.62 does not match receiver presult_5/PAD (cell pc3d01) voltage 2.7 for view my_analysis_view_setup.
+Type 'man IMPMSMV-1810' for more detail.
+**WARN: (IMPMSMV-1810):	Net result[4], driver result_reg[4]/Q (cell dfnrq1) voltage 1.62 does not match receiver presult_4/PAD (cell pc3d01) voltage 2.7 for view my_analysis_view_setup.
+Type 'man IMPMSMV-1810' for more detail.
+**WARN: (IMPMSMV-1810):	Net result[3], driver result_reg[3]/Q (cell dfnrq1) voltage 1.62 does not match receiver presult_3/PAD (cell pc3d01) voltage 2.7 for view my_analysis_view_setup.
+Type 'man IMPMSMV-1810' for more detail.
+**WARN: (IMPMSMV-1810):	Net result[2], driver result_reg[2]/Q (cell dfnrq1) voltage 1.62 does not match receiver presult_2/PAD (cell pc3d01) voltage 2.7 for view my_analysis_view_setup.
+Type 'man IMPMSMV-1810' for more detail.
+**WARN: (IMPMSMV-1810):	Net result[1], driver result_reg[1]/Q (cell dfnrq1) voltage 1.62 does not match receiver presult_1/PAD (cell pc3d01) voltage 2.7 for view my_analysis_view_setup.
+Type 'man IMPMSMV-1810' for more detail.
+**WARN: (IMPMSMV-1810):	Net result[0], driver result_reg[0]/Q (cell dfnrq1) voltage 1.62 does not match receiver presult_0/PAD (cell pc3d01) voltage 2.7 for view my_analysis_view_setup.
+Type 'man IMPMSMV-1810' for more detail.
+**WARN: (IMPMSMV-1810):	Net carry, driver carry_reg/Q (cell dfnrq1) voltage 1.62 does not match receiver pcarry/PAD (cell pc3d01) voltage 2.7 for view my_analysis_view_setup.
+Type 'man IMPMSMV-1810' for more detail.
+**WARN: (IMPMSMV-1810):	Net zero, driver zero_reg/Q (cell dfnrq1) voltage 1.62 does not match receiver pzero/PAD (cell pc3d01) voltage 2.7 for view my_analysis_view_setup.
+Type 'man IMPMSMV-1810' for more detail.
+**WARN: (IMPMSMV-1810):	Net overflow, driver overflow_reg/Q (cell dfnrq1) voltage 1.62 does not match receiver poverflow/PAD (cell pc3d01) voltage 2.7 for view my_analysis_view_setup.
+Type 'man IMPMSMV-1810' for more detail.
+Total number of fetched objects 227
+AAE_INFO: Total number of nets for which stage creation was skipped for all views 0
+End delay calculation. (MEM=1764.09 CPU=0:00:00.0 REAL=0:00:00.0)
+End delay calculation (fullDC). (MEM=1764.09 CPU=0:00:00.1 REAL=0:00:00.0)
+
+Begin Power Analysis
+
+             0V	    VSSO
+             0V	    VSS
+          1.62V	    VDDO
+          1.62V	    VDD
+
+Begin Processing Timing Library for Power Calculation
+
+Begin Processing Timing Library for Power Calculation
+
+
+
+Begin Processing Power Net/Grid for Power Calculation
+
+Ended Processing Power Net/Grid for Power Calculation: (cpu=0:00:00, real=0:00:00, mem(process/total/peak)=1495.11MB/3276.61MB/1495.11MB)
+
+Begin Processing Timing Window Data for Power Calculation
+
+clk(200MHz) CK: assigning clock clk to net clk
+Ended Processing Timing Window Data for Power Calculation: (cpu=0:00:00, real=0:00:00, mem(process/total/peak)=1495.11MB/3276.61MB/1495.11MB)
+
+Begin Processing User Attributes
+
+Ended Processing User Attributes: (cpu=0:00:00, real=0:00:00, mem(process/total/peak)=1495.11MB/3276.61MB/1495.11MB)
+
+Begin Processing Signal Activity
+
+
+Starting Levelizing
+2025-Dec-12 16:00:23 (2025-Dec-12 10:30:23 GMT)
+2025-Dec-12 16:00:23 (2025-Dec-12 10:30:23 GMT): 10%
+2025-Dec-12 16:00:23 (2025-Dec-12 10:30:23 GMT): 20%
+2025-Dec-12 16:00:23 (2025-Dec-12 10:30:23 GMT): 30%
+2025-Dec-12 16:00:23 (2025-Dec-12 10:30:23 GMT): 40%
+2025-Dec-12 16:00:23 (2025-Dec-12 10:30:23 GMT): 50%
+2025-Dec-12 16:00:23 (2025-Dec-12 10:30:23 GMT): 60%
+2025-Dec-12 16:00:23 (2025-Dec-12 10:30:23 GMT): 70%
+2025-Dec-12 16:00:23 (2025-Dec-12 10:30:23 GMT): 80%
+2025-Dec-12 16:00:23 (2025-Dec-12 10:30:23 GMT): 90%
+
+Finished Levelizing
+2025-Dec-12 16:00:23 (2025-Dec-12 10:30:23 GMT)
+
+Starting Activity Propagation
+2025-Dec-12 16:00:23 (2025-Dec-12 10:30:23 GMT)
+** INFO:  (VOLTUS_POWR-1356): No default input activity has been set. Defaulting to 0.2.
+Use 'set_default_switching_activity -input_activity' command to change the default activity value.
+
+2025-Dec-12 16:00:23 (2025-Dec-12 10:30:23 GMT): 10%
+2025-Dec-12 16:00:23 (2025-Dec-12 10:30:23 GMT): 20%
+2025-Dec-12 16:00:23 (2025-Dec-12 10:30:23 GMT): 30%
+
+Finished Activity Propagation
+2025-Dec-12 16:00:23 (2025-Dec-12 10:30:23 GMT)
+Ended Processing Signal Activity: (cpu=0:00:00, real=0:00:00, mem(process/total/peak)=1495.95MB/3276.61MB/1495.95MB)
+
+Begin Power Computation
+
+      ----------------------------------------------------------
+      # of cell(s) missing both power/leakage table: 0
+      # of cell(s) missing power table: 0
+      # of cell(s) missing leakage table: 0
+      ----------------------------------------------------------
+
+
+
+Starting Calculating power
+2025-Dec-12 16:00:23 (2025-Dec-12 10:30:23 GMT)
+ ... Calculating switching power
+2025-Dec-12 16:00:23 (2025-Dec-12 10:30:23 GMT): 10%
+2025-Dec-12 16:00:23 (2025-Dec-12 10:30:23 GMT): 20%
+2025-Dec-12 16:00:23 (2025-Dec-12 10:30:23 GMT): 30%
+2025-Dec-12 16:00:23 (2025-Dec-12 10:30:23 GMT): 40%
+  Cannot locate supply power rail for net 'clk1' of instance pclk
+  Cannot locate supply power rail for net 'rst_n1' of instance prst_n
+  Cannot locate supply power rail for net 'A7' of instance pA_7
+  Cannot locate supply power rail for net 'A6' of instance pA_6
+  Cannot locate supply power rail for net 'A5' of instance pA_5
+  only first five unconnected nets are listed...
+2025-Dec-12 16:00:23 (2025-Dec-12 10:30:23 GMT): 50%
+ ... Calculating internal and leakage power
+2025-Dec-12 16:00:23 (2025-Dec-12 10:30:23 GMT): 60%
+2025-Dec-12 16:00:23 (2025-Dec-12 10:30:23 GMT): 70%
+2025-Dec-12 16:00:23 (2025-Dec-12 10:30:23 GMT): 80%
+2025-Dec-12 16:00:23 (2025-Dec-12 10:30:23 GMT): 90%
+
+Finished Calculating power
+2025-Dec-12 16:00:23 (2025-Dec-12 10:30:23 GMT)
+      # of MSMV cell(s) missing power_level: 0
+Ended Power Computation: (cpu=0:00:00, real=0:00:00, mem(process/total/peak)=1496.92MB/3284.61MB/1496.92MB)
+
+Begin Processing User Attributes
+
+Ended Processing User Attributes: (cpu=0:00:00, real=0:00:00, mem(process/total/peak)=1496.92MB/3284.61MB/1496.92MB)
+
+Ended Power Analysis: (cpu=0:00:00, real=0:00:00, mem(process/total/peak)=1496.92MB/3284.61MB/1496.92MB)
+
+Begin Boundary Leakage Calculation
+Ended Boundary Leakage Calculation: (cpu=0:00:00, real=0:00:00,
+mem(process/total/peak)=1496.92MB/3284.61MB/1496.92MB)
+Begin Static Power Report Generation
+*----------------------------------------------------------------------------------------
+*	Innovus 21.15-s110_1 (64bit) 09/23/2022 13:08 (Linux 3.10.0-693.el7.x86_64)
+*	
+*
+* 	Date & Time:	2025-Dec-12 16:00:23 (2025-Dec-12 10:30:23 GMT)
+*
+*----------------------------------------------------------------------------------------
+*
+*	Design: source
+*
+*	Liberty Libraries used:
+*	        my_analysis_view_setup: /home/vlsi12/Downloads/scl_pdk/stdlib/fs120/liberty/lib_flow_ss/tsl18fs120_scl_ss.lib
+*	        my_analysis_view_setup: /home/vlsi12/Downloads/scl_pdk/iolib/cio250/synopsys/2002.05/models/tsl18cio250_max.lib
+*
+*	Parasitic Files used:
+*
+*       Power View : my_analysis_view_setup
+*
+*       User-Defined Activity : N.A.
+*
+*       Activity File: N.A.
+*
+*       Hierarchical Global Activity: N.A.
+*
+*       Global Activity: N.A.
+*
+*       Sequential Element Activity: N.A.
+*
+*       Primary Input Activity: 0.200000
+*
+*       Default icg ratio: N.A.
+*
+*       Global Comb ClockGate Ratio: N.A.
+*
+*	Power Units = 1mW
+*
+*	Time Units = 1e-09 secs
+*
+*       report_power
+*
+-----------------------------------------------------------------------------------------
+*
+
+
+
+Total Power
+-----------------------------------------------------------------------------------------
+Total Internal Power:       15.76367490 	   84.2609%
+Total Switching Power:       2.92209797 	   15.6194%
+Total Leakage Power:         0.02240593 	    0.1198%
+Total Power:                18.70817880
+-----------------------------------------------------------------------------------------
+
+
+Group                           Internal   Switching     Leakage       Total  Percentage 
+                                Power      Power         Power         Power  (%)        
+-----------------------------------------------------------------------------------------
+Sequential                        0.1235       2.823   8.658e-06       2.947       15.75
+Macro                                  0           0           0           0           0
+IO                                 15.53           0     0.02046       15.55       83.14
+Physical-Only                          0           0   0.0009563   0.0009563    0.005112
+Combinational                     0.1068      0.0986   2.173e-05      0.2054       1.098
+Clock (Combinational)                  0           0           0           0           0
+Clock (Sequential)                     0           0           0           0           0
+-----------------------------------------------------------------------------------------
+Total                              15.76       2.922     0.02145       18.71       99.99
+-----------------------------------------------------------------------------------------
+
+
+Rail                  Voltage   Internal   Switching     Leakage       Total  Percentage 
+                                Power      Power         Power         Power  (%)        
+-----------------------------------------------------------------------------------------
+VDDO                     1.62      7.767           0     0.01119       7.778       41.57
+VDD                      1.62      7.997       2.922     0.01122       10.93       58.43
+ 
+ 
+-----------------------------------------------------------------------------------------
+*	Power Distribution Summary: 
+*              Highest Average Power:                      pclk (pc3c01):            1.079
+*              Highest Leakage Power:                    prst_n (pc3d01):        0.0006376
+*                Total Cap:      4.17401e-11 F
+*                Total instances in design:   209
+*                Total instances in design with no power:     0
+*                Total instances in design with no activty:     0
+
+*                Total Fillers and Decap:     3
+-----------------------------------------------------------------------------------------
+ 
+** INFO:  (VOLTUS_POWR-3465): There are 0 decaps and 0 fillers in the design
+
+Ended Static Power Report Generation: (cpu=0:00:00, real=0:00:00,
+mem(process/total/peak)=1498.08MB/3284.61MB/1498.08MB)
+

@@ -1,6 +1,21 @@
 #!/usr/bin/env bash
-# rtl_to_gdsii_automation.sh
-# Full automation: Runs Genus Synthesis, waits for completion, and then runs Innovus PD.
+
+
+# =====================================================
+# One-Click RTL-to-GDSII Automation Framework
+# Author : Md. Irfan
+#
+# Requirements:
+#   - Cadence Genus and Innovus installed
+#   - SCL PDK at: /home/vlsiXX/Downloads/scl_pdk
+#   - Single Verilog file: source.v (top module: source)
+#   - Single-clock designs supported
+#
+# Notes:
+#   - Script auto-detects lab PC paths (/home/vlsiXX)
+#   - If paths differ, update PDK_BASE and CADENCE_CSH
+# =====================================================
+
 
 set -euo pipefail
 IFS=$'\n\t'

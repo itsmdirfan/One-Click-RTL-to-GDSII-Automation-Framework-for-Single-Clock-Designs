@@ -840,7 +840,7 @@ saveDesign source_routing.enc
 
 streamOut source.gds -mapFile ${PDK_BASE}/stdlib/fs120/tech_data/lef/gds2_fe_4l.map -libName DesignLib -merge {${PDK_BASE}/stdlib/fs120/gds/tsl18fs120.gds ${PDK_BASE}/iolib/cio150/gds/tsl18cio150_4lm.gds} -uniquifyCellNames -units 1000 -mode ALL  
 
-mkdir ../3_powerplan ../4_placement ../5_cts ../6_routing ../7_GDSII_import
+mkdir ../3_powerplan ../4_placement ../5_cts ../6_routing ../7_GDSII
 
 mv source_powerplan.enc.dat ../3_powerplan/source_powerplan.enc.dat
 mv source_powerplan.enc ../3_powerplan/source_powerplan.enc
@@ -868,7 +868,7 @@ mv timing_routing.rpt ../6_routing/timing_routing.rpt
 mv area_routing.rpt ../6_routing/area_routing.rpt
 mv source_netlist_routing.v ../6_routing/source_netlist_routing.v
 
-mv source.gds ../7_GDSII_import/source.gds
+mv source.gds ../7_GDSII/source.gds
 
 rm padframe_generator.sh pd.tcl mmmc.tcl source.sdc source.v modified_netlist_generator.sh
 

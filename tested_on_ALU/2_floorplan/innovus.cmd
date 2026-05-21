@@ -1,7 +1,7 @@
 #######################################################
 #                                                     
 #  Innovus Command Logging File                     
-#  Created on Fri Dec 12 16:00:14 2025                
+#  Created on Thu May 21 13:04:34 2026                
 #                                                     
 #######################################################
 
@@ -16,15 +16,15 @@
 set_global _enable_mmmc_by_default_flow      $CTE::mmmc_default
 suppressMessage ENCEXT-2799
 getVersion
-set init_verilog ./source_netlist_modified.v
-set init_top_cell source
-set init_lef_file {/home/vlsi12/Downloads/scl_pdk/stdlib/fs120/tech_data/lef/tsl180l4.lef /home/vlsi12/Downloads/scl_pdk/stdlib/fs120/lef/tsl18fs120_scl.lef /home/vlsi12/Downloads/scl_pdk/iolib/cio250/cds/lef/tsl18cio250_4lm.lef}
+set init_verilog ./alu_top_netlist_modified.v
+set init_top_cell alu_top
+set init_lef_file {/home/vlsi3/Downloads/scl_pdk/stdlib/fs120/tech_data/lef/tsl180l4.lef /home/vlsi3/Downloads/scl_pdk/stdlib/fs120/lef/tsl18fs120_scl.lef /home/vlsi3/Downloads/scl_pdk/iolib/cio250/cds/lef/tsl18cio250_4lm.lef}
 set init_pwr_net {VDD VDDO}
 set init_gnd_net {VSS VSSO}
 set init_mmmc_file mmmc.tcl
 init_design
 loadIoFile ./padframe.io
-floorPlan -site CoreSite -noSnapToGrid -d 1410 1410 20 20 20 20
+floorPlan -site CoreSite -noSnapToGrid -d 1291 1291 20 20 20 20
 addIoFiller -cell pfeed10000 -prefix FILLER -side n
 addIoFiller -cell pfeed10000 -prefix FILLER -side e
 addIoFiller -cell pfeed10000 -prefix FILLER -side w
@@ -38,7 +38,7 @@ addIoFiller -cell pfeed00010 -prefix FILLER -side e
 addIoFiller -cell pfeed00010 -prefix FILLER -side w
 addIoFiller -cell pfeed00010 -prefix FILLER -side s
 report_area -detail > area_floorplan.rpt
-saveDesign source_floorplan.enc
+saveDesign alu_top_floorplan.enc
 globalNetConnect VDD -type pgpin -pin VDD -override -verbose -netlistOverride
 globalNetConnect VSS -type pgpin -pin VSS -override -verbose -netlistOverride
 globalNetConnect VDDO -type pgpin -pin VDDO -override -verbose -netlistOverride
@@ -47,7 +47,7 @@ addRing -skip_via_on_wire_shape Noshape -exclude_selected 1 -skip_via_on_pin Sta
 sroute -connect { blockPin padPin padRing corePin floatingStripe } -layerChangeRange { M1 TOP_M } -blockPinTarget { nearestTarget } -padPinPortConnect { allPort oneGeom } -padPinTarget { nearestTarget } -corePinTarget { firstAfterRowEnd } -floatingStripeTarget { blockring padring ring stripe ringpin blockpin followpin } -allowJogging 1 -crossoverViaLayerRange { M1 TOP_M } -nets { VDD VSS } -allowLayerChange 1 -blockPin useLef -targetViaLayerRange { M1 TOP_M }
 addStripe -skip_via_on_wire_shape Noshape -block_ring_top_layer_limit TOP_M -max_same_layer_jog_length 0.88 -padcore_ring_bottom_layer_limit M3 -set_to_set_distance 40 -skip_via_on_pin Standardcell -stacked_via_top_layer TOP_M -padcore_ring_top_layer_limit TOP_M -spacing 0.46 -xleft_offset 10 -merge_stripes_value 0.56 -layer TOP_M -block_ring_bottom_layer_limit M3 -width 2 -nets {VDD VSS} -stacked_via_bottom_layer M1
 report_power > power_powerplan.rpt
-saveDesign source_powerplan.enc
+saveDesign alu_top_powerplan.enc
 setPlaceMode -fp false
 getPlaceMode -place_hierarchical_flow -quiet
 report_message -start_cmd
@@ -174,18 +174,18 @@ set_global timing_enable_path_group_priority false
 set_global timing_constraint_enable_group_path_resetting false
 getOptMode -allowPreCTSClkSrcPaths -quiet
 set_global _is_ipo_interactive_path_groups 1
-group_path -name in2reg_tmp.303793 -from {0x682 0x685} -to 0x686 -ignore_source_of_trigger_arc
+group_path -name in2reg_tmp.402521 -from {0x37c 0x37f} -to 0x380 -ignore_source_of_trigger_arc
 getOptMode -allowPreCTSClkSrcPaths -quiet
 set_global _is_ipo_interactive_path_groups 1
-group_path -name in2out_tmp.303793 -from {0x689 0x68c} -to 0x68d -ignore_source_of_trigger_arc
+group_path -name in2out_tmp.402521 -from {0x383 0x386} -to 0x387 -ignore_source_of_trigger_arc
 set_global _is_ipo_interactive_path_groups 1
-group_path -name reg2reg_tmp.303793 -from 0x68f -to 0x690
+group_path -name reg2reg_tmp.402521 -from 0x389 -to 0x38a
 set_global _is_ipo_interactive_path_groups 1
-group_path -name reg2out_tmp.303793 -from 0x693 -to 0x694
-setPathGroupOptions reg2reg_tmp.303793 -effortLevel high
-reset_path_group -name in2reg_tmp.303793
+group_path -name reg2out_tmp.402521 -from 0x38d -to 0x38e
+setPathGroupOptions reg2reg_tmp.402521 -effortLevel high
+reset_path_group -name in2reg_tmp.402521
 set_global _is_ipo_interactive_path_groups 0
-reset_path_group -name in2out_tmp.303793
+reset_path_group -name in2out_tmp.402521
 set_global _is_ipo_interactive_path_groups 0
 setDelayCalMode -ignoreNetLoad false
 set delaycal_use_default_delay_limit 1000
@@ -209,9 +209,9 @@ scanReorder
 setDelayCalMode -engine aae
 all_setup_analysis_views
 getPlaceMode -exp_slack_driven -quiet
-reset_path_group -name reg2reg_tmp.303793
+reset_path_group -name reg2reg_tmp.402521
 set_global _is_ipo_interactive_path_groups 0
-reset_path_group -name reg2out_tmp.303793
+reset_path_group -name reg2out_tmp.402521
 set_global _is_ipo_interactive_path_groups 0
 set_global timing_enable_path_group_priority $gpsPrivate::optSave_ctePGPriority
 set_global timing_constraint_enable_group_path_resetting $gpsPrivate::optSave_ctePGResetting
@@ -242,18 +242,18 @@ set_global timing_enable_path_group_priority false
 set_global timing_constraint_enable_group_path_resetting false
 getOptMode -allowPreCTSClkSrcPaths -quiet
 set_global _is_ipo_interactive_path_groups 1
-group_path -name in2reg_tmp.303793 -from {0x698 0x69b} -to 0x69c -ignore_source_of_trigger_arc
+group_path -name in2reg_tmp.402521 -from {0x392 0x395} -to 0x396 -ignore_source_of_trigger_arc
 getOptMode -allowPreCTSClkSrcPaths -quiet
 set_global _is_ipo_interactive_path_groups 1
-group_path -name in2out_tmp.303793 -from {0x69f 0x6a2} -to 0x6a3 -ignore_source_of_trigger_arc
+group_path -name in2out_tmp.402521 -from {0x399 0x39c} -to 0x39d -ignore_source_of_trigger_arc
 set_global _is_ipo_interactive_path_groups 1
-group_path -name reg2reg_tmp.303793 -from 0x6a5 -to 0x6a6
+group_path -name reg2reg_tmp.402521 -from 0x39f -to 0x3a0
 set_global _is_ipo_interactive_path_groups 1
-group_path -name reg2out_tmp.303793 -from 0x6a9 -to 0x6aa
-setPathGroupOptions reg2reg_tmp.303793 -effortLevel high
-reset_path_group -name in2reg_tmp.303793
+group_path -name reg2out_tmp.402521 -from 0x3a3 -to 0x3a4
+setPathGroupOptions reg2reg_tmp.402521 -effortLevel high
+reset_path_group -name in2reg_tmp.402521
 set_global _is_ipo_interactive_path_groups 0
-reset_path_group -name in2out_tmp.303793
+reset_path_group -name in2out_tmp.402521
 set_global _is_ipo_interactive_path_groups 0
 setDelayCalMode -ignoreNetLoad false
 set delaycal_use_default_delay_limit 1000
@@ -294,9 +294,9 @@ getPlaceMode -congRepairCleanupPadding -quiet
 getPlaceMode -quiet -wireLenOptEffort
 all_setup_analysis_views
 getPlaceMode -exp_slack_driven -quiet
-reset_path_group -name reg2reg_tmp.303793
+reset_path_group -name reg2reg_tmp.402521
 set_global _is_ipo_interactive_path_groups 0
-reset_path_group -name reg2out_tmp.303793
+reset_path_group -name reg2out_tmp.402521
 set_global _is_ipo_interactive_path_groups 0
 set_global timing_enable_path_group_priority $gpsPrivate::optSave_ctePGPriority
 set_global timing_constraint_enable_group_path_resetting $gpsPrivate::optSave_ctePGResetting
@@ -349,15 +349,15 @@ um::pop_snapshot_stack
 um::create_snapshot -name place_design
 getPlaceMode -exp_slack_driven -quiet
 report_timing > timing_placement.rpt
-saveNetlist ./source_netlist_placement.v
-saveDesign source_placement.enc
+saveNetlist ./alu_top_netlist_placement.v
+saveDesign alu_top_placement.enc
 setOptMode -fixCap true -fixTran true -fixFanoutLoad false
 optDesign -preCTS
 optDesign -postCTS
 report_timing > timing_cts.rpt
 report_clocks > clocks_cts.rpt
-saveNetlist ./source_netlist_cts.v
-saveDesign source_cts.enc
+saveNetlist ./alu_top_netlist_cts.v
+saveDesign alu_top_cts.enc
 routeDesign -globalDetail
 setAnalysisMode -analysisType onChipVariation -cppr both
 setOptMode -fixCap true -fixTran true -fixFanoutLoad false
@@ -368,6 +368,6 @@ addFiller -cell feedth -prefix FILLER -doDRC
 report_power > power_routing.rpt
 report_timing > timing_routing.rpt
 report_area > area_routing.rpt
-saveNetlist ./source_netlist_routing.v
-saveDesign source_routing.enc
-streamOut source.gds -mapFile /home/vlsi12/Downloads/scl_pdk/stdlib/fs120/tech_data/lef/gds2_fe_4l.map -libName DesignLib -merge {/home/vlsi12/Downloads/scl_pdk/stdlib/fs120/gds/tsl18fs120.gds /home/vlsi12/Downloads/scl_pdk/iolib/cio150/gds/tsl18cio150_4lm.gds} -uniquifyCellNames -units 1000 -mode ALL
+saveNetlist ./alu_top_netlist_routing.v
+saveDesign alu_top_routing.enc
+streamOut alu_top.gds -mapFile /home/vlsi3/Downloads/scl_pdk/stdlib/fs120/tech_data/lef/gds2_fe_4l.map -libName DesignLib -merge {/home/vlsi3/Downloads/scl_pdk/stdlib/fs120/gds/tsl18fs120.gds /home/vlsi3/Downloads/scl_pdk/iolib/cio150/gds/tsl18cio150_4lm.gds} -uniquifyCellNames -units 1000 -mode ALL

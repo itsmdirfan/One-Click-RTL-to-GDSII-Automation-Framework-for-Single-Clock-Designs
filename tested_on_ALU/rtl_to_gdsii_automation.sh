@@ -2,18 +2,14 @@
 
 
 # =====================================================
-# One-Click RTL-to-GDSII Automation Framework
+# RTL-to-GDSII Automation Script
 # Author : Md. Irfan
+# Tool   : Cadence Genus (Synthesis) + Innovus (PD)
+# PDK    : SCL 180nm (tsl18fs120)
 #
-# Requirements:
-#   - Cadence Genus and Innovus installed
-#   - SCL PDK at: /home/vlsiXX/Downloads/scl_pdk
-#   - Single Verilog file: source.v (top module: source)
-#   - Single-clock designs supported
-#
-# Notes:
-#   - Script auto-detects lab PC paths (/home/vlsiXX)
-#   - If paths differ, update PDK_BASE and CADENCE_CSH
+# Run:
+#   bash rtl_to_gdsii_automation.sh       # auto-detects vlsi PC
+#   bash rtl_to_gdsii_automation.sh 15    # override vlsi PC number
 # =====================================================
 
 
@@ -22,33 +18,82 @@ IFS=$'\n\t'
 
 
 # ===================================================================
-#                          VLSI PC DETECTION
+#                    USER CONFIGURATION
+# ===================================================================
+
+# RTL files to synthesize (space-separated); all must be in this directory
+# single file  : RTL_FILES="alu.v"
+# multiple files: RTL_FILES="alu.v datapath.v controller.v"
+RTL_FILES="alu_top.v adder.v logic_unit.v"
+
+# Top module name (as declared in RTL)
+TOP_MODULE="alu_top"
+
+# Clock port name (as in RTL), period in ps, I/O delays in ns
+CLK_NAME="clk"
+CLK_PERIOD_PS=5000       # 5000 ps = 5 ns = 200 MHz
+INPUT_DELAY_NS=1
+OUTPUT_DELAY_NS=1
+
+# Synthesis effort: low / medium / high
+SYN_EFFORT="high"
+
+# If placement fails due to core-limited design, increase dummy IO count here.
+# Must be >= actual number of IO ports; will be rounded up to next multiple of 4.
+# Leave 0 to use the auto-calculated count (default).
+USER_IO_COUNT=0
+
+# Fallback vlsi PC number if auto-detection fails
+DEFAULT_VLSI_PC=12
+
+# expects: /home/vlsi<N>/Downloads/scl_pdk  — override if PDK is elsewhere
+PDK_BASE_OVERRIDE=""
+
+# expects: /home/vlsi<N>/c2s/cadence/install/cshrc  — override if Cadence is not installed in c2s
+CADENCE_CSH_OVERRIDE=""
+
+# ===================================================================
+#                    END OF USER CONFIGURATION
 # ===================================================================
 
 
-DEFAULT_VLSI_PC=12
+# ===================================================================
+#                      VLSI PC DETECTION
+# ===================================================================
+
 if [ $# -ge 1 ] && [[ "$1" =~ ^[0-9]+$ ]]; then
   VLSI_PC="$1"
+  echo "VLSI PC (from argument): $VLSI_PC"
 elif [[ "$PWD" =~ /home/vlsi([0-9]+)(/|$) ]]; then
   VLSI_PC="${BASH_REMATCH[1]}"
+  echo "VLSI PC (auto-detected): $VLSI_PC"
 else
   VLSI_PC="$DEFAULT_VLSI_PC"
+  echo "Warning: VLSI PC not detected. Using DEFAULT_VLSI_PC=$VLSI_PC"
+  echo "         Pass the correct number as an argument or update DEFAULT_VLSI_PC above."
 fi
 
 
 # ===================================================================
-#                  SCL PDK and CADENCE CSH PATHS
+#                  SCL PDK AND CADENCE CSH PATHS
 # ===================================================================
 
+if [ -n "$PDK_BASE_OVERRIDE" ]; then
+  PDK_BASE="$PDK_BASE_OVERRIDE"
+else
+  PDK_BASE="/home/vlsi${VLSI_PC}/Downloads/scl_pdk"
+fi
 
-PDK_BASE="/home/vlsi${VLSI_PC}/Downloads/scl_pdk"
-CADENCE_CSH="/home/vlsi${VLSI_PC}/c2s/cadence/install/cshrc"
+if [ -n "$CADENCE_CSH_OVERRIDE" ]; then
+  CADENCE_CSH="$CADENCE_CSH_OVERRIDE"
+else
+  CADENCE_CSH="/home/vlsi${VLSI_PC}/c2s/cadence/install/cshrc"
+fi
 
 
 # ===================================================================
 #                      GLOBAL CONFIGURATION
 # ===================================================================
-
 
 GENUS_CMD="genus"
 INNOVUS_CMD="innovus"
@@ -72,8 +117,17 @@ echo
 
 echo "--- Starting Genus Synthesis ---"
 mkdir -p "$SYN_DIR"
-cp source.v "$SYN_DIR/source.v"
-export PDK_BASE # Export variable for Genus TCL access
+
+# IFS is set to newline+tab globally; temporarily restore space for splitting RTL_FILES
+OLDIFS="$IFS"
+IFS=' '
+for f in $RTL_FILES; do cp "$f" "$SYN_DIR/$f"; done
+RTL_FILES_TCL=""
+for f in $RTL_FILES; do RTL_FILES_TCL="${RTL_FILES_TCL}{${f}} "; done
+RTL_FILES_TCL="${RTL_FILES_TCL% }"
+IFS="$OLDIFS"
+
+export PDK_BASE # needed inside Genus TCL via $env(PDK_BASE)
 
 
 # ===================================================================
@@ -81,33 +135,33 @@ export PDK_BASE # Export variable for Genus TCL access
 # ===================================================================
 
 
-cat > "$SYN_DIR/synth_script.tcl" <<'TCL_EOF'
+cat > "$SYN_DIR/synth_script.tcl" <<TCL_EOF
 #!/usr/bin/tclsh
 
-set_attribute init_lib_search_path $env(PDK_BASE)/stdlib/fs120/liberty/lib_flow_ss
+set_attribute init_lib_search_path \$env(PDK_BASE)/stdlib/fs120/liberty/lib_flow_ss
 set_attribute library tsl18fs120_scl_ss.lib
-set_attribute init_hdl_search_path ../$env(PWD)
+set_attribute init_hdl_search_path {.}
 set_attribute information_level 6
 
-set myfiles "source.v"
-set basename "source"
-set myClk "clk"
-set myPeriod_ps 5000
-set myInDelay_ns 1
-set myOutDelay_ns 1
+set myfiles [list ${RTL_FILES_TCL}]
+set basename "${TOP_MODULE}"
+set myClk "${CLK_NAME}"
+set myPeriod_ps ${CLK_PERIOD_PS}
+set myInDelay_ns ${INPUT_DELAY_NS}
+set myOutDelay_ns ${OUTPUT_DELAY_NS}
 set runname "synth_report"
 
-read_hdl -sv $myfiles
-elaborate $basename
+read_hdl -sv \$myfiles
+elaborate \$basename
 
-define_clock -name $myClk -period $myPeriod_ps [get_ports $myClk]
-set_clock_transition 0.1 [get_clocks $myClk]
-set_input_delay $myInDelay_ns -clock $myClk [remove_from_collection [all_inputs] [get_ports $myClk]]
-set_output_delay $myOutDelay_ns -clock $myClk [all_outputs]
+define_clock -name \$myClk -period \$myPeriod_ps [get_ports \$myClk]
+set_clock_transition 0.1 [get_clocks \$myClk]
+set_input_delay \$myInDelay_ns -clock \$myClk [remove_from_collection [all_inputs] [get_ports \$myClk]]
+set_output_delay \$myOutDelay_ns -clock \$myClk [all_outputs]
 
-set_attribute syn_generic_effort high
-set_attribute syn_map_effort high
-set_attribute syn_opt_effort high
+set_attribute syn_generic_effort ${SYN_EFFORT}
+set_attribute syn_map_effort ${SYN_EFFORT}
+set_attribute syn_opt_effort ${SYN_EFFORT}
 
 check_design -unresolved
 report timing -lint
@@ -115,13 +169,15 @@ syn_gen
 syn_map
 syn_opt
 
-write_hdl -mapped > ${basename}_netlist.v
-write_sdc > ${basename}.sdc
+ungroup -all -flatten
 
-report_timing > ${runname}_timing.rpt
-report_gates > ${runname}_area.rpt
-report_power > ${runname}_power.rpt
-report_clock > ${runname}_clock.rpt
+write_hdl -mapped > \${basename}_netlist.v
+write_sdc > \${basename}.sdc
+
+report_timing > \${runname}_timing.rpt
+report_gates > \${runname}_area.rpt
+report_power > \${runname}_power.rpt
+report_clock > \${runname}_clock.rpt
 puts "Synthesis finished";
 
 exit
@@ -156,10 +212,12 @@ FLOOR_DIR="$PROJECT_ROOT/2_floorplan"
 
 mkdir -p "$FLOOR_DIR"
 
-# copy RTL and synthesized netlist
-cp -f "$PROJECT_ROOT/source.v" "$FLOOR_DIR/source.v"
-cp -f "$SYN_DIR/source_netlist.v" "$FLOOR_DIR/source_netlist.v"
-cp -f "$SYN_DIR/source.sdc" "$FLOOR_DIR/source.sdc"
+# copy RTL files and synthesized netlist
+OLDIFS="$IFS"; IFS=' '
+for f in $RTL_FILES; do cp -f "$PROJECT_ROOT/$f" "$FLOOR_DIR/$f"; done
+IFS="$OLDIFS"
+cp -f "$SYN_DIR/${TOP_MODULE}_netlist.v" "$FLOOR_DIR/${TOP_MODULE}_netlist.v"
+cp -f "$SYN_DIR/${TOP_MODULE}.sdc" "$FLOOR_DIR/${TOP_MODULE}.sdc"
 
 
 # ===================================================================
@@ -171,18 +229,20 @@ cat > "$FLOOR_DIR/padframe_generator.sh" <<'BASHPAD'
 #!/usr/bin/env bash
 # padframe_generator.sh
 # Usage:
-#   ./padframe_generator.sh [verilog_file]
-# Default verilog_file = source_netlist.v
+#   ./padframe_generator.sh <netlist.v> [user_io_count]
+# user_io_count: optional; if > actual IO count, extra dummy pins are added
+#                use this when placement fails due to core-limited design
 
 set -euo pipefail
 IFS=$'\n\t'
 
 VERILOG="${1:-source_netlist.v}"
+USER_IO_COUNT="${2:-0}"   # 0 = auto
 OUT="padframe.io"
 
 if [[ ! -f "$VERILOG" ]]; then
   echo "ERROR: Verilog file '$VERILOG' not found."
-  echo "Usage: $0 [verilog_file]"
+  echo "Usage: $0 [verilog_file] [user_io_count]"
   exit 1
 fi
 
@@ -265,7 +325,6 @@ for p in "${pow_pins[@]}"; do orig_padlist+=("$p"); done
 # 2) Create transformed pad names: prefix p for inputs and outputs, keep power names unchanged
 pad_names=()
 for orig in "${orig_padlist[@]}"; do
-  # If this orig is one of the power pins (exact match), keep unchanged
   is_power=0
   for pp in "${pow_pins[@]}"; do
     if [[ "$orig" == "$pp" ]]; then is_power=1; break; fi
@@ -275,23 +334,45 @@ for orig in "${orig_padlist[@]}"; do
     continue
   fi
 
-  # If vector like name[idx], convert to p<name>_<idx>
   if [[ "$orig" =~ ^([a-zA-Z_][a-zA-Z0-9_]*)\[([0-9]+)\]$ ]]; then
     base="${BASH_REMATCH[1]}"
     idx="${BASH_REMATCH[2]}"
     newname="p${base}_${idx}"
     pad_names+=("$newname")
   else
-    # scalar: remove unwanted chars and prefix p
     clean=$(echo "$orig" | sed -E 's/[^a-zA-Z0-9_]/_/g')
     newname="p${clean}"
     pad_names+=("$newname")
   fi
 done
 
-# 3) Pad count adjust (round up to multiple of 4)
-total=${#pad_names[@]}
-rounded=$(( ( (total + 3) / 4 ) * 4 ))
+# 3) Pad count: auto or user-overridden
+actual_io_count=$(( ${#orig_inputs[@]} + ${#orig_outputs[@]} ))
+actual_total=$(( actual_io_count + ${#pow_pins[@]} ))  # IOs + 4 power
+
+# auto: round actual_total up to next multiple of 4
+auto_rounded=$(( ( (actual_total + 3) / 4 ) * 4 ))
+
+if [[ "$USER_IO_COUNT" -gt 0 ]]; then
+  if [[ "$USER_IO_COUNT" -lt "$actual_io_count" ]]; then
+    echo "Warning: USER_IO_COUNT ($USER_IO_COUNT) < actual IO count ($actual_io_count). Ignoring override."
+    rounded=$auto_rounded
+  else
+    # user count = desired total signal IOs (>=actual); add 4 power, round to multiple of 4
+    user_total=$(( USER_IO_COUNT + ${#pow_pins[@]} ))
+    rounded=$(( ( (user_total + 3) / 4 ) * 4 ))
+    if [[ "$rounded" -lt "$auto_rounded" ]]; then
+      echo "Warning: user_io_count gives fewer slots than auto. Using auto."
+      rounded=$auto_rounded
+    else
+      echo "USER_IO_COUNT=$USER_IO_COUNT -> total slots=$rounded (auto was $auto_rounded)"
+    fi
+  fi
+else
+  rounded=$auto_rounded
+fi
+
+total=${#pad_names[@]}   # actual pads built so far (IOs + power)
 dummies=$(( rounded - total ))
 per_side=$(( rounded / 4 ))
 
@@ -422,8 +503,8 @@ EOF
 # 6) Print summary
 echo "Generated $OUT"
 echo "Original ports: inputs=${#orig_inputs[@]} outputs=${#orig_outputs[@]}"
-echo "Total pads (incl power) = $total -> rounded to $rounded"
-echo "Dummies added = $dummies"
+echo "Total pads (incl power) = $actual_total -> rounded to $rounded"
+echo "Dummies added = $dummies  (actual IOs=$actual_io_count, power=4)"
 echo "Pads per side = $per_side"
 echo "Left:${#left[@]} Top:${#top[@]} Right:${#right[@]} Bottom:${#bottom[@]}"
 
@@ -433,11 +514,11 @@ chmod +x "$FLOOR_DIR/padframe_generator.sh"
 
 # run padframe generator and capture output (padframe.io will be created)
 pushd "$FLOOR_DIR" >/dev/null
-./padframe_generator.sh source_netlist.v
+./padframe_generator.sh ${TOP_MODULE}_netlist.v ${USER_IO_COUNT}
 
 # per-side detection for floorplan spacing---
 PADFILE="padframe.io"
-DEFAULT_WIDTH=780
+DEFAULT_WIDTH=$(( (253 * 2) + (3 * 65) + ((3 + 1) * 20) ))  # = 781, per_side=3
 WIDTH=$DEFAULT_WIDTH
 per_side_detect=0
 
@@ -458,8 +539,8 @@ if [ -f "$PADFILE" ]; then
     fi
   fi
 
-  # compute WIDTH for Floorplan
-  WIDTH=$(( 780 + (per_side_detect - 3) * 90 ))
+  # width = (2 corner cells * 253) + (per_side * 65 io pad) + ((per_side+1) * 20 filler)
+  WIDTH=$(( (253 * 2) + (per_side_detect * 65) + ((per_side_detect + 1) * 20) ))
   if [ "$WIDTH" -le 0 ]; then WIDTH=$DEFAULT_WIDTH; fi
 else
   echo "Warning: $PADFILE not found; using default width $DEFAULT_WIDTH"
@@ -722,7 +803,7 @@ BASHPAD
 chmod +x "$FLOOR_DIR/modified_netlist_generator.sh"
 
 pushd "$FLOOR_DIR" >/dev/null
-./modified_netlist_generator.sh source_netlist.v
+./modified_netlist_generator.sh ${TOP_MODULE}_netlist.v
 popd >/dev/null
 
 
@@ -734,8 +815,8 @@ popd >/dev/null
 cat > "$FLOOR_DIR/pd.tcl" <<TCLFP
 
 # Netlist and Top Module
-set init_verilog "./source_netlist_modified.v"
-set init_top_cell "source"
+set init_verilog "./${TOP_MODULE}_netlist_modified.v"
+set init_top_cell "${TOP_MODULE}"
 
 # LEF Files
 set init_lef_file [list \
@@ -777,7 +858,7 @@ addIoFiller -cell pfeed00010 -prefix FILLER -side s
 
 report_area -detail > area_floorplan.rpt
 
-saveDesign source_floorplan.enc
+saveDesign ${TOP_MODULE}_floorplan.enc
 
 #Powerplan
 
@@ -795,7 +876,7 @@ addStripe -skip_via_on_wire_shape Noshape -block_ring_top_layer_limit TOP_M -max
 
 report_power > power_powerplan.rpt
 
-saveDesign source_powerplan.enc
+saveDesign ${TOP_MODULE}_powerplan.enc
 
 #Placement
 
@@ -803,9 +884,9 @@ setPlaceMode -fp false
 placeDesign -noPrePlaceOpt
 
 report_timing > timing_placement.rpt
-saveNetlist ./source_netlist_placement.v
+saveNetlist ./${TOP_MODULE}_netlist_placement.v
 
-saveDesign source_placement.enc
+saveDesign ${TOP_MODULE}_placement.enc
 
 #CTS
 
@@ -817,9 +898,9 @@ optDesign -postCTS
 
 report_timing > timing_cts.rpt
 report_clocks > clocks_cts.rpt
-saveNetlist ./source_netlist_cts.v
+saveNetlist ./${TOP_MODULE}_netlist_cts.v
 
-saveDesign source_cts.enc
+saveDesign ${TOP_MODULE}_cts.enc
 
 #Routing
 
@@ -834,43 +915,41 @@ addFiller -cell feedth -prefix FILLER -doDRC
 report_power > power_routing.rpt
 report_timing > timing_routing.rpt
 report_area > area_routing.rpt
-saveNetlist ./source_netlist_routing.v
+saveNetlist ./${TOP_MODULE}_netlist_routing.v
 
-saveDesign source_routing.enc
+saveDesign ${TOP_MODULE}_routing.enc
 
-streamOut source.gds -mapFile ${PDK_BASE}/stdlib/fs120/tech_data/lef/gds2_fe_4l.map -libName DesignLib -merge {${PDK_BASE}/stdlib/fs120/gds/tsl18fs120.gds ${PDK_BASE}/iolib/cio150/gds/tsl18cio150_4lm.gds} -uniquifyCellNames -units 1000 -mode ALL  
+streamOut ${TOP_MODULE}.gds -mapFile ${PDK_BASE}/stdlib/fs120/tech_data/lef/gds2_fe_4l.map -libName DesignLib -merge {${PDK_BASE}/stdlib/fs120/gds/tsl18fs120.gds ${PDK_BASE}/iolib/cio150/gds/tsl18cio150_4lm.gds} -uniquifyCellNames -units 1000 -mode ALL  
 
 mkdir ../3_powerplan ../4_placement ../5_cts ../6_routing ../7_GDSII
 
-mv source_powerplan.enc.dat ../3_powerplan/source_powerplan.enc.dat
-mv source_powerplan.enc ../3_powerplan/source_powerplan.enc
+mv ${TOP_MODULE}_powerplan.enc.dat ../3_powerplan/${TOP_MODULE}_powerplan.enc.dat
+mv ${TOP_MODULE}_powerplan.enc ../3_powerplan/${TOP_MODULE}_powerplan.enc
 
 mv power_powerplan.rpt ../3_powerplan/power_powerplan.rpt
 
-mv source_placement.enc.dat ../4_placement/source_placement.enc.dat
-mv source_placement.enc ../4_placement/source_placement.enc
+mv ${TOP_MODULE}_placement.enc.dat ../4_placement/${TOP_MODULE}_placement.enc.dat
+mv ${TOP_MODULE}_placement.enc ../4_placement/${TOP_MODULE}_placement.enc
 
 mv timing_placement.rpt ../4_placement/timing_placement.rpt
-mv source_netlist_placement.v ../4_placement/source_netlist_placement.v
+mv ${TOP_MODULE}_netlist_placement.v ../4_placement/${TOP_MODULE}_netlist_placement.v
 
-mv source_cts.enc.dat ../5_cts/source_cts.enc.dat
-mv source_cts.enc ../5_cts/source_cts.enc
+mv ${TOP_MODULE}_cts.enc.dat ../5_cts/${TOP_MODULE}_cts.enc.dat
+mv ${TOP_MODULE}_cts.enc ../5_cts/${TOP_MODULE}_cts.enc
 
 mv timing_cts.rpt ../5_cts/timing_cts.rpt
 mv clocks_cts.rpt ../5_cts/clocks_cts.rpt
-mv source_netlist_cts.v ../5_cts/source_netlist_cts.v
+mv ${TOP_MODULE}_netlist_cts.v ../5_cts/${TOP_MODULE}_netlist_cts.v
 
-mv source_routing.enc.dat ../6_routing/source_routing.enc.dat
-mv source_routing.enc ../6_routing/source_routing.enc
+mv ${TOP_MODULE}_routing.enc.dat ../6_routing/${TOP_MODULE}_routing.enc.dat
+mv ${TOP_MODULE}_routing.enc ../6_routing/${TOP_MODULE}_routing.enc
 
 mv power_routing.rpt ../6_routing/power_routing.rpt
 mv timing_routing.rpt ../6_routing/timing_routing.rpt
 mv area_routing.rpt ../6_routing/area_routing.rpt
-mv source_netlist_routing.v ../6_routing/source_netlist_routing.v
+mv ${TOP_MODULE}_netlist_routing.v ../6_routing/${TOP_MODULE}_netlist_routing.v
 
-mv source.gds ../7_GDSII/source.gds
-
-rm padframe_generator.sh pd.tcl mmmc.tcl source.sdc source.v modified_netlist_generator.sh
+mv ${TOP_MODULE}.gds ../7_GDSII/${TOP_MODULE}.gds
 
 exit
 TCLFP
@@ -901,7 +980,7 @@ create_library_set -name lib_180nm -timing [list \
 ]
 
 # 2. Constraint Modes
-create_constraint_mode -name my_constraint_mode -sdc_files ./source.sdc
+create_constraint_mode -name my_constraint_mode -sdc_files ./${TOP_MODULE}.sdc
 
 # 3. RC Corners
 create_rc_corner -name my_rc_corner_worst -T 25
@@ -926,6 +1005,14 @@ TCLFP
 
 
 csh -c "cd $FLOOR_DIR; source \"$CADENCE_CSH\"; innovus -file ./pd.tcl;"
+
+# cleanup temporary files from floorplan dir
+rm -f "$FLOOR_DIR/padframe_generator.sh" "$FLOOR_DIR/pd.tcl" \
+      "$FLOOR_DIR/mmmc.tcl" "$FLOOR_DIR/${TOP_MODULE}.sdc" \
+      "$FLOOR_DIR/modified_netlist_generator.sh"
+OLDIFS="$IFS"; IFS=' '
+for f in $RTL_FILES; do rm -f "$FLOOR_DIR/$f"; done
+IFS="$OLDIFS"
 
 echo "=== FULL RTL TO GDS2 AUTOMATION COMPLETE ==="
 

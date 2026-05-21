@@ -1,0 +1,501 @@
+[05/21 13:06:04      0s] 
+[05/21 13:06:04      0s] Cadence Innovus(TM) Implementation System.
+[05/21 13:06:04      0s] Copyright 2021 Cadence Design Systems, Inc. All rights reserved worldwide.
+[05/21 13:06:04      0s] 
+[05/21 13:06:04      0s] Version:	v21.15-s110_1, built Fri Sep 23 13:08:12 PDT 2022
+[05/21 13:06:04      0s] Options:	
+[05/21 13:06:04      0s] Date:		Thu May 21 13:06:04 2026
+[05/21 13:06:04      0s] Host:		ece.nitdgp.ac.in (x86_64 w/Linux 4.18.0-425.19.2.el8_7.x86_64) (6cores*12cpus*12th Gen Intel(R) Core(TM) i5-12500 18432KB)
+[05/21 13:06:04      0s] OS:		Red Hat Enterprise Linux release 8.7 (Ootpa)
+[05/21 13:06:04      0s] 
+[05/21 13:06:04      0s] License:
+[05/21 13:06:04      0s] 		[13:06:04.275825] Configured Lic search path (21.01-s002): 5280@14.139.1.126
+
+[05/21 13:06:06      0s] 		invs	Innovus Implementation System	21.1	checkout succeeded
+[05/21 13:06:06      0s] 		8 CPU jobs allowed with the current license(s). Use setMultiCpuUsage to set your required CPU count.
+[05/21 13:06:13      7s] Reset Parastics called with the command setExtractRCMode -reset@(#)CDS: Innovus v21.15-s110_1 (64bit) 09/23/2022 13:08 (Linux 3.10.0-693.el7.x86_64)
+[05/21 13:06:15      8s] @(#)CDS: NanoRoute 21.15-s110_1 NR220912-2004/21_15-UB (database version 18.20.592) {superthreading v2.17}
+[05/21 13:06:15      8s] @(#)CDS: AAE 21.15-s039 (64bit) 09/23/2022 (Linux 3.10.0-693.el7.x86_64)
+[05/21 13:06:15      8s] @(#)CDS: CTE 21.15-s038_1 () Sep 20 2022 11:42:13 ( )
+[05/21 13:06:15      8s] @(#)CDS: SYNTECH 21.15-s012_1 () Sep  5 2022 10:25:51 ( )
+[05/21 13:06:15      8s] @(#)CDS: CPE v21.15-s076
+[05/21 13:06:15      8s] @(#)CDS: IQuantus/TQuantus 21.1.1-s867 (64bit) Sun Jun 26 22:12:54 PDT 2022 (Linux 3.10.0-693.el7.x86_64)
+[05/21 13:06:15      8s] @(#)CDS: OA 22.60-p076 Wed May 18 13:45:29 2022
+[05/21 13:06:15      8s] @(#)CDS: SGN 20.10-d001 (01-Jun-2020) (64 bit executable, Qt5.9.0)
+[05/21 13:06:15      8s] @(#)CDS: RCDB 11.15.0
+[05/21 13:06:15      8s] @(#)CDS: STYLUS 21.12-s013_1 (08/15/2022 08:25 PDT)
+[05/21 13:06:15      8s] @(#)CDS: SystemPlanner-21.15Rel-8720 (21.15) (2022-08-22 18:31:54+0800)
+[05/21 13:06:15      8s] Create and set the environment variable TMPDIR to /tmp/innovus_temp_408883_ece.nitdgp.ac.in_vlsi3_C8ZXXc.
+
+[05/21 13:06:15      8s] Change the soft stacksize limit to 0.2%RAM (63 mbytes). Set global soft_stack_size_limit to change the value.
+[05/21 13:06:16      9s] 
+[05/21 13:06:16      9s] **INFO:  MMMC transition support version v31-84 
+[05/21 13:06:16      9s] 
+[05/21 13:06:16      9s] <CMD> set_global _enable_mmmc_by_default_flow      $CTE::mmmc_default
+[05/21 13:06:16      9s] <CMD> suppressMessage ENCEXT-2799
+[05/21 13:06:16      9s] <CMD> getVersion
+[05/21 13:06:16      9s] [INFO] Loading PVS 22.20 fill procedures
+[05/21 13:06:16      9s] <CMD> win
+[05/21 13:06:29     10s] <CMD> encMessage warning 0
+[05/21 13:06:29     10s] Suppress "**WARN ..." messages.
+[05/21 13:06:29     10s] <CMD> encMessage debug 0
+[05/21 13:06:29     10s] <CMD> is_common_ui_mode
+[05/21 13:06:29     10s] <CMD> restoreDesign /home/vlsi3/Documents/test_automation/6_routing/alu_top_routing.enc.dat alu_top
+[05/21 13:06:29     10s] #% Begin load design ... (date=05/21 13:06:29, mem=1020.6M)
+[05/21 13:06:29     10s] Set Default Input Pin Transition as 0.1 ps.
+[05/21 13:06:29     10s] Loading design 'alu_top' saved by 'Innovus' '21.15-s110_1' on 'Thu May 21 13:05:06 2026'.
+[05/21 13:06:29     10s] % Begin Load MMMC data ... (date=05/21 13:06:29, mem=1023.0M)
+[05/21 13:06:29     10s] % End Load MMMC data ... (date=05/21 13:06:29, total cpu=0:00:00.0, real=0:00:00.0, peak res=1023.7M, current mem=1023.7M)
+[05/21 13:06:29     10s] 
+[05/21 13:06:29     10s] Loading LEF file /home/vlsi3/Documents/test_automation/6_routing/alu_top_routing.enc.dat/libs/lef/tsl180l4.lef ...
+[05/21 13:06:29     10s] 
+[05/21 13:06:29     10s] Loading LEF file /home/vlsi3/Documents/test_automation/6_routing/alu_top_routing.enc.dat/libs/lef/tsl18fs120_scl.lef ...
+[05/21 13:06:29     10s] Set DBUPerIGU to M2 pitch 560.
+[05/21 13:06:29     10s] 
+[05/21 13:06:29     10s] Loading LEF file /home/vlsi3/Documents/test_automation/6_routing/alu_top_routing.enc.dat/libs/lef/tsl18cio250_4lm.lef ...
+[05/21 13:06:29     10s] **WARN: (IMPLF-200):	Pin 'PAD' in macro 'apc3d01' has no ANTENNAGATEAREA value defined. The library data is incomplete and some process antenna rules will not be checked correctly.
+[05/21 13:06:29     10s] Type 'man IMPLF-200' for more detail.
+[05/21 13:06:29     10s] **WARN: (IMPLF-200):	Pin 'PAD' in macro 'pc3b01' has no ANTENNAGATEAREA value defined. The library data is incomplete and some process antenna rules will not be checked correctly.
+[05/21 13:06:29     10s] Type 'man IMPLF-200' for more detail.
+[05/21 13:06:29     10s] **WARN: (IMPLF-200):	Pin 'PAD' in macro 'pc3b01d' has no ANTENNAGATEAREA value defined. The library data is incomplete and some process antenna rules will not be checked correctly.
+[05/21 13:06:29     10s] Type 'man IMPLF-200' for more detail.
+[05/21 13:06:29     10s] **WARN: (IMPLF-200):	Pin 'PAD' in macro 'pc3b01u' has no ANTENNAGATEAREA value defined. The library data is incomplete and some process antenna rules will not be checked correctly.
+[05/21 13:06:29     10s] Type 'man IMPLF-200' for more detail.
+[05/21 13:06:29     10s] **WARN: (IMPLF-200):	Pin 'PAD' in macro 'pc3b02' has no ANTENNAGATEAREA value defined. The library data is incomplete and some process antenna rules will not be checked correctly.
+[05/21 13:06:29     10s] Type 'man IMPLF-200' for more detail.
+[05/21 13:06:29     10s] **WARN: (IMPLF-200):	Pin 'PAD' in macro 'pc3b02d' has no ANTENNAGATEAREA value defined. The library data is incomplete and some process antenna rules will not be checked correctly.
+[05/21 13:06:29     10s] Type 'man IMPLF-200' for more detail.
+[05/21 13:06:29     10s] **WARN: (IMPLF-200):	Pin 'PAD' in macro 'pc3b02u' has no ANTENNAGATEAREA value defined. The library data is incomplete and some process antenna rules will not be checked correctly.
+[05/21 13:06:29     10s] Type 'man IMPLF-200' for more detail.
+[05/21 13:06:29     10s] **WARN: (IMPLF-200):	Pin 'PAD' in macro 'pc3b03' has no ANTENNAGATEAREA value defined. The library data is incomplete and some process antenna rules will not be checked correctly.
+[05/21 13:06:29     10s] Type 'man IMPLF-200' for more detail.
+[05/21 13:06:29     10s] **WARN: (IMPLF-200):	Pin 'PAD' in macro 'pc3b03d' has no ANTENNAGATEAREA value defined. The library data is incomplete and some process antenna rules will not be checked correctly.
+[05/21 13:06:29     10s] Type 'man IMPLF-200' for more detail.
+[05/21 13:06:29     10s] **WARN: (IMPLF-200):	Pin 'PAD' in macro 'pc3b03ed' has no ANTENNAGATEAREA value defined. The library data is incomplete and some process antenna rules will not be checked correctly.
+[05/21 13:06:29     10s] Type 'man IMPLF-200' for more detail.
+[05/21 13:06:29     10s] **WARN: (IMPLF-200):	Pin 'PAD' in macro 'pc3b03u' has no ANTENNAGATEAREA value defined. The library data is incomplete and some process antenna rules will not be checked correctly.
+[05/21 13:06:29     10s] Type 'man IMPLF-200' for more detail.
+[05/21 13:06:29     10s] **WARN: (IMPLF-200):	Pin 'PAD' in macro 'pc3b04' has no ANTENNAGATEAREA value defined. The library data is incomplete and some process antenna rules will not be checked correctly.
+[05/21 13:06:29     10s] Type 'man IMPLF-200' for more detail.
+[05/21 13:06:29     10s] **WARN: (IMPLF-200):	Pin 'PAD' in macro 'pc3b04d' has no ANTENNAGATEAREA value defined. The library data is incomplete and some process antenna rules will not be checked correctly.
+[05/21 13:06:29     10s] Type 'man IMPLF-200' for more detail.
+[05/21 13:06:29     10s] **WARN: (IMPLF-200):	Pin 'PAD' in macro 'pc3b04u' has no ANTENNAGATEAREA value defined. The library data is incomplete and some process antenna rules will not be checked correctly.
+[05/21 13:06:29     10s] Type 'man IMPLF-200' for more detail.
+[05/21 13:06:29     10s] **WARN: (IMPLF-200):	Pin 'PAD' in macro 'pc3b05' has no ANTENNAGATEAREA value defined. The library data is incomplete and some process antenna rules will not be checked correctly.
+[05/21 13:06:29     10s] Type 'man IMPLF-200' for more detail.
+[05/21 13:06:29     10s] **WARN: (IMPLF-200):	Pin 'PAD' in macro 'pc3b05d' has no ANTENNAGATEAREA value defined. The library data is incomplete and some process antenna rules will not be checked correctly.
+[05/21 13:06:29     10s] Type 'man IMPLF-200' for more detail.
+[05/21 13:06:29     10s] **WARN: (IMPLF-200):	Pin 'PAD' in macro 'pc3b05u' has no ANTENNAGATEAREA value defined. The library data is incomplete and some process antenna rules will not be checked correctly.
+[05/21 13:06:29     10s] Type 'man IMPLF-200' for more detail.
+[05/21 13:06:29     10s] **WARN: (IMPLF-200):	Pin 'PAD' in macro 'pc3b21eu' has no ANTENNAGATEAREA value defined. The library data is incomplete and some process antenna rules will not be checked correctly.
+[05/21 13:06:29     10s] Type 'man IMPLF-200' for more detail.
+[05/21 13:06:29     10s] **WARN: (IMPLF-200):	Pin 'PAD' in macro 'pc3b25eu' has no ANTENNAGATEAREA value defined. The library data is incomplete and some process antenna rules will not be checked correctly.
+[05/21 13:06:29     10s] Type 'man IMPLF-200' for more detail.
+[05/21 13:06:29     10s] **WARN: (IMPLF-200):	Pin 'PAD' in macro 'pc3d00' has no ANTENNAGATEAREA value defined. The library data is incomplete and some process antenna rules will not be checked correctly.
+[05/21 13:06:29     10s] Type 'man IMPLF-200' for more detail.
+[05/21 13:06:29     10s] **WARN: (EMS-27):	Message (IMPLF-200) has exceeded the current message display limit of 20.
+[05/21 13:06:29     10s] To increase the message display limit, refer to the product command reference manual.
+[05/21 13:06:29     10s] 
+##  Check design process and node:  
+##  Both design process and tech node are not set.
+
+[05/21 13:06:29     10s] Loading view definition file from /home/vlsi3/Documents/test_automation/6_routing/alu_top_routing.enc.dat/viewDefinition.tcl
+[05/21 13:06:29     10s] Reading my_max_library_set timing library '/home/vlsi3/Downloads/scl_pdk/stdlib/fs120/liberty/lib_flow_ss/tsl18fs120_scl_ss.lib' ...
+[05/21 13:06:29     10s] Both ff/latch and statetable are present in cell 'lanht4'. Only ff/latch will be used to model sequential cell behavior and statetable will be ignored (File /home/vlsi3/Downloads/scl_pdk/stdlib/fs120/liberty/lib_flow_ss/tsl18fs120_scl_ss.lib, Line 104953)
+[05/21 13:06:29     10s] Both ff/latch and statetable are present in cell 'lanht2'. Only ff/latch will be used to model sequential cell behavior and statetable will be ignored (File /home/vlsi3/Downloads/scl_pdk/stdlib/fs120/liberty/lib_flow_ss/tsl18fs120_scl_ss.lib, Line 157476)
+[05/21 13:06:30     11s] Both ff/latch and statetable are present in cell 'lanht1'. Only ff/latch will be used to model sequential cell behavior and statetable will be ignored (File /home/vlsi3/Downloads/scl_pdk/stdlib/fs120/liberty/lib_flow_ss/tsl18fs120_scl_ss.lib, Line 288762)
+[05/21 13:06:30     11s] Read 534 cells in library 'tsl18fs120_scl_ss' 
+[05/21 13:06:30     11s] Reading my_max_library_set timing library '/home/vlsi3/Downloads/scl_pdk/iolib/cio250/synopsys/2002.05/models/tsl18cio250_max.lib' ...
+[05/21 13:06:30     11s] Read 93 cells in library 'tsl18cio250_max' 
+[05/21 13:06:30     11s] Reading my_min_library_set timing library '/home/vlsi3/Downloads/scl_pdk/stdlib/fs120/liberty/lib_flow_ff/tsl18fs120_scl_ff.lib' ...
+[05/21 13:06:30     11s] Both ff/latch and statetable are present in cell 'lanht4'. Only ff/latch will be used to model sequential cell behavior and statetable will be ignored (File /home/vlsi3/Downloads/scl_pdk/stdlib/fs120/liberty/lib_flow_ff/tsl18fs120_scl_ff.lib, Line 104965)
+[05/21 13:06:30     11s] Both ff/latch and statetable are present in cell 'lanht2'. Only ff/latch will be used to model sequential cell behavior and statetable will be ignored (File /home/vlsi3/Downloads/scl_pdk/stdlib/fs120/liberty/lib_flow_ff/tsl18fs120_scl_ff.lib, Line 157496)
+[05/21 13:06:30     11s] Both ff/latch and statetable are present in cell 'lanht1'. Only ff/latch will be used to model sequential cell behavior and statetable will be ignored (File /home/vlsi3/Downloads/scl_pdk/stdlib/fs120/liberty/lib_flow_ff/tsl18fs120_scl_ff.lib, Line 288805)
+[05/21 13:06:30     11s] Read 534 cells in library 'tsl18fs120_scl_ff' 
+[05/21 13:06:30     11s] Reading my_min_library_set timing library '/home/vlsi3/Downloads/scl_pdk/iolib/cio250/synopsys/2002.05/models/tsl18cio250_min.lib' ...
+[05/21 13:06:30     11s] Read 93 cells in library 'tsl18cio250_min' 
+[05/21 13:06:30     11s] Ending "PreSetAnalysisView" (total cpu=0:00:00.7, real=0:00:01.0, peak res=1133.8M, current mem=1048.9M)
+[05/21 13:06:30     11s] *** End library_loading (cpu=0.01min, real=0.02min, mem=35.9M, fe_cpu=0.19min, fe_real=0.43min, fe_mem=1123.2M) ***
+[05/21 13:06:30     11s] % Begin Load netlist data ... (date=05/21 13:06:30, mem=1049.0M)
+[05/21 13:06:30     11s] *** Begin netlist parsing (mem=1123.2M) ***
+[05/21 13:06:30     11s] **WARN: (IMPVL-159):	Pin 'VDD' of cell 'aoim22d1' is defined in LEF but not in the timing library.
+[05/21 13:06:30     11s] Type 'man IMPVL-159' for more detail.
+[05/21 13:06:30     11s] **WARN: (IMPVL-159):	Pin 'VSS' of cell 'aoim22d1' is defined in LEF but not in the timing library.
+[05/21 13:06:30     11s] Type 'man IMPVL-159' for more detail.
+[05/21 13:06:30     11s] **WARN: (IMPVL-159):	Pin 'VDD' of cell 'or04d2' is defined in LEF but not in the timing library.
+[05/21 13:06:30     11s] Type 'man IMPVL-159' for more detail.
+[05/21 13:06:30     11s] **WARN: (IMPVL-159):	Pin 'VSS' of cell 'or04d2' is defined in LEF but not in the timing library.
+[05/21 13:06:30     11s] Type 'man IMPVL-159' for more detail.
+[05/21 13:06:30     11s] **WARN: (IMPVL-159):	Pin 'VDD' of cell 'an02d1' is defined in LEF but not in the timing library.
+[05/21 13:06:30     11s] Type 'man IMPVL-159' for more detail.
+[05/21 13:06:30     11s] **WARN: (IMPVL-159):	Pin 'VSS' of cell 'an02d1' is defined in LEF but not in the timing library.
+[05/21 13:06:30     11s] Type 'man IMPVL-159' for more detail.
+[05/21 13:06:30     11s] **WARN: (IMPVL-159):	Pin 'VDD' of cell 'nd02da' is defined in LEF but not in the timing library.
+[05/21 13:06:30     11s] Type 'man IMPVL-159' for more detail.
+[05/21 13:06:30     11s] **WARN: (IMPVL-159):	Pin 'VSS' of cell 'nd02da' is defined in LEF but not in the timing library.
+[05/21 13:06:30     11s] Type 'man IMPVL-159' for more detail.
+[05/21 13:06:30     11s] **WARN: (IMPVL-159):	Pin 'VDD' of cell 'dl03d2' is defined in LEF but not in the timing library.
+[05/21 13:06:30     11s] Type 'man IMPVL-159' for more detail.
+[05/21 13:06:30     11s] **WARN: (IMPVL-159):	Pin 'VSS' of cell 'dl03d2' is defined in LEF but not in the timing library.
+[05/21 13:06:30     11s] Type 'man IMPVL-159' for more detail.
+[05/21 13:06:30     11s] **WARN: (IMPVL-159):	Pin 'VDD' of cell 'invtd7' is defined in LEF but not in the timing library.
+[05/21 13:06:30     11s] Type 'man IMPVL-159' for more detail.
+[05/21 13:06:30     11s] **WARN: (IMPVL-159):	Pin 'VSS' of cell 'invtd7' is defined in LEF but not in the timing library.
+[05/21 13:06:30     11s] Type 'man IMPVL-159' for more detail.
+[05/21 13:06:30     11s] **WARN: (IMPVL-159):	Pin 'VDD' of cell 'slnht2' is defined in LEF but not in the timing library.
+[05/21 13:06:30     11s] Type 'man IMPVL-159' for more detail.
+[05/21 13:06:30     11s] **WARN: (IMPVL-159):	Pin 'VSS' of cell 'slnht2' is defined in LEF but not in the timing library.
+[05/21 13:06:30     11s] Type 'man IMPVL-159' for more detail.
+[05/21 13:06:30     11s] **WARN: (IMPVL-159):	Pin 'VDD' of cell 'aoim22d2' is defined in LEF but not in the timing library.
+[05/21 13:06:30     11s] Type 'man IMPVL-159' for more detail.
+[05/21 13:06:30     11s] **WARN: (IMPVL-159):	Pin 'VSS' of cell 'aoim22d2' is defined in LEF but not in the timing library.
+[05/21 13:06:30     11s] Type 'man IMPVL-159' for more detail.
+[05/21 13:06:30     11s] **WARN: (IMPVL-159):	Pin 'VDD' of cell 'mffnrb2' is defined in LEF but not in the timing library.
+[05/21 13:06:30     11s] Type 'man IMPVL-159' for more detail.
+[05/21 13:06:30     11s] **WARN: (IMPVL-159):	Pin 'VSS' of cell 'mffnrb2' is defined in LEF but not in the timing library.
+[05/21 13:06:30     11s] Type 'man IMPVL-159' for more detail.
+[05/21 13:06:30     11s] **WARN: (IMPVL-159):	Pin 'VDD' of cell 'nr03d7' is defined in LEF but not in the timing library.
+[05/21 13:06:30     11s] Type 'man IMPVL-159' for more detail.
+[05/21 13:06:30     11s] **WARN: (IMPVL-159):	Pin 'VSS' of cell 'nr03d7' is defined in LEF but not in the timing library.
+[05/21 13:06:30     11s] Type 'man IMPVL-159' for more detail.
+[05/21 13:06:30     11s] **WARN: (EMS-27):	Message (IMPVL-159) has exceeded the current message display limit of 20.
+[05/21 13:06:30     11s] To increase the message display limit, refer to the product command reference manual.
+[05/21 13:06:30     11s] Pin 'VDD' of cell 'pvdi' is declared as power/ground in LEF but as signal in timing library.  Treat it as power/ground.
+[05/21 13:06:30     11s] Pin 'VDDC' of cell 'pvdc' is declared as power/ground in LEF but as signal in timing library.  Treat it as power/ground.
+[05/21 13:06:30     11s] Pin 'VDDO' of cell 'pvda' is declared as power/ground in LEF but as signal in timing library.  Treat it as power/ground.
+[05/21 13:06:30     11s] Pin 'VSS' of cell 'pv0i' is declared as power/ground in LEF but as signal in timing library.  Treat it as power/ground.
+[05/21 13:06:30     11s] Pin 'VSS' of cell 'pv0f' is declared as power/ground in LEF but as signal in timing library.  Treat it as power/ground.
+[05/21 13:06:30     11s] Pin 'VSSC' of cell 'pv0c' is declared as power/ground in LEF but as signal in timing library.  Treat it as power/ground.
+[05/21 13:06:30     11s] Pin 'VSSO' of cell 'pv0a' is declared as power/ground in LEF but as signal in timing library.  Treat it as power/ground.
+[05/21 13:06:30     11s] Pin 'AVDD' of cell 'apvdi' is declared as power/ground in LEF but as signal in timing library.  Treat it as power/ground.
+[05/21 13:06:30     11s] Pin 'AVDDO' of cell 'apvda' is declared as power/ground in LEF but as signal in timing library.  Treat it as power/ground.
+[05/21 13:06:30     11s] Pin 'AVSS' of cell 'apv0i' is declared as power/ground in LEF but as signal in timing library.  Treat it as power/ground.
+[05/21 13:06:30     11s] Pin 'AVSSO' of cell 'apv0a' is declared as power/ground in LEF but as signal in timing library.  Treat it as power/ground.
+[05/21 13:06:30     11s] Created 627 new cells from 4 timing libraries.
+[05/21 13:06:30     11s] Reading netlist ...
+[05/21 13:06:30     11s] Backslashed names will retain backslash and a trailing blank character.
+[05/21 13:06:30     11s] Reading verilogBinary netlist '/home/vlsi3/Documents/test_automation/6_routing/alu_top_routing.enc.dat/alu_top.v.bin'
+[05/21 13:06:30     11s] 
+[05/21 13:06:30     11s] *** Memory Usage v#1 (Current mem = 1130.258M, initial mem = 483.879M) ***
+[05/21 13:06:30     11s] *** End netlist parsing (cpu=0:00:00.0, real=0:00:00.0, mem=1130.3M) ***
+[05/21 13:06:30     11s] % End Load netlist data ... (date=05/21 13:06:30, total cpu=0:00:00.0, real=0:00:00.0, peak res=1067.9M, current mem=1067.9M)
+[05/21 13:06:30     11s] Set top cell to alu_top.
+[05/21 13:06:30     11s] Hooked 1254 DB cells to tlib cells.
+[05/21 13:06:30     11s] Ending "BindLib:" (total cpu=0:00:00.0, real=0:00:00.0, peak res=1077.1M, current mem=1077.1M)
+[05/21 13:06:30     11s] Starting recursive module instantiation check.
+[05/21 13:06:30     11s] No recursion found.
+[05/21 13:06:30     11s] Building hierarchical netlist for Cell alu_top ...
+[05/21 13:06:30     11s] *** Netlist is unique.
+[05/21 13:06:30     11s] Setting Std. cell height to 5600 DBU (smallest netlist inst).
+[05/21 13:06:30     11s] ** info: there are 1285 modules.
+[05/21 13:06:30     11s] ** info: there are 80 stdCell insts.
+[05/21 13:06:30     11s] ** info: there are 31 Pad insts.
+[05/21 13:06:30     11s] 
+[05/21 13:06:30     11s] *** Memory Usage v#1 (Current mem = 1175.672M, initial mem = 483.879M) ***
+[05/21 13:06:30     11s] *info: set bottom ioPad orient R0
+[05/21 13:06:30     11s] Initializing I/O assignment ...
+[05/21 13:06:30     11s] Adjusting Core to Left to: 20.4800. Core to Bottom to: 20.4800.
+[05/21 13:06:30     11s] **WARN: (IMPFP-3961):	The techSite 'CO_MSTR_c' has no related standard cells in the LEF/OA library. The calculations for this site type cannot be made unless standard cell models of this type exist in the LEF/OA library. Ignore this warning if the SITE is not used by the library. Alternatively, remove the SITE definition for the LEF/OA library to avoid this message.
+[05/21 13:06:30     11s] Type 'man IMPFP-3961' for more detail.
+[05/21 13:06:30     11s] **WARN: (IMPFP-3961):	The techSite 'IOSite_c' has no related standard cells in the LEF/OA library. The calculations for this site type cannot be made unless standard cell models of this type exist in the LEF/OA library. Ignore this warning if the SITE is not used by the library. Alternatively, remove the SITE definition for the LEF/OA library to avoid this message.
+[05/21 13:06:30     11s] Type 'man IMPFP-3961' for more detail.
+[05/21 13:06:30     11s] Horizontal Layer M1 offset = 0 (derived)
+[05/21 13:06:30     11s] Vertical Layer M2 offset = 280 (derived)
+[05/21 13:06:30     11s] Start create_tracks
+[05/21 13:06:30     11s] Generated pitch 0.56 in M3 is different from 0.84 defined in technology file in preferred direction.
+[05/21 13:06:30     11s] Loading preference file /home/vlsi3/Documents/test_automation/6_routing/alu_top_routing.enc.dat/gui.pref.tcl ...
+[05/21 13:06:30     11s] **WARN: (IMPOPT-3602):	The specified path group name reg2reg is not defined.
+[05/21 13:06:30     11s] Type 'man IMPOPT-3602' for more detail.
+[05/21 13:06:30     11s] Effort level <high> specified for reg2reg path_group
+[05/21 13:06:30     11s] **WARN: (IMPCK-8086):	The command setCTSMode is obsolete and will be removed in the next release. This command still works in this release, but by the next release you must transition to the CCOpt-based CTS flow.
+[05/21 13:06:30     11s] **WARN: (IMPTCM-77):	Option "-drouteStartIteration" for command setNanoRouteMode is obsolete and will be removed in a future release. The obsolete option still works in this release but to avoid this warning and to ensure compatibility with future releases, remove the obsolete option from your script.
+[05/21 13:06:30     11s] AAE_INFO: switching -siAware from false to true ...
+[05/21 13:06:30     11s] AAE_INFO: The setting is changed from false to true in setDelayCalMode -SIAware
+[05/21 13:06:30     11s] Change floorplan default-technical-site to 'CoreSite'.
+[05/21 13:06:30     11s] Extraction setup Delayed 
+[05/21 13:06:30     11s] *Info: initialize multi-corner CTS.
+[05/21 13:06:30     11s] Ending "SetAnalysisView" (total cpu=0:00:00.0, real=0:00:00.0, peak res=1344.5M, current mem=1097.8M)
+[05/21 13:06:30     11s] Tech dependent Parameter, Build TLibAnalyzer for: cellAreaConsiderPadding
+[05/21 13:06:30     11s] 
+[05/21 13:06:30     11s] TimeStamp Creating Cell Server ...(0, 1, 1, 1) in restoreDesign Begin ...
+[05/21 13:06:30     11s] Summary for sequential cells identification: 
+[05/21 13:06:30     11s]   Identified SBFF number: 114
+[05/21 13:06:30     11s]   Identified MBFF number: 0
+[05/21 13:06:30     11s]   Identified SB Latch number: 0
+[05/21 13:06:30     11s]   Identified MB Latch number: 0
+[05/21 13:06:30     11s]   Not identified SBFF number: 6
+[05/21 13:06:30     11s]   Not identified MBFF number: 0
+[05/21 13:06:30     11s]   Not identified SB Latch number: 0
+[05/21 13:06:30     11s]   Not identified MB Latch number: 0
+[05/21 13:06:30     11s]   Number of sequential cells which are not FFs: 83
+[05/21 13:06:30     11s] Total number of combinational cells: 321
+[05/21 13:06:30     11s] Total number of sequential cells: 203
+[05/21 13:06:30     11s] Total number of tristate cells: 10
+[05/21 13:06:30     11s] Total number of level shifter cells: 0
+[05/21 13:06:30     11s] Total number of power gating cells: 0
+[05/21 13:06:30     11s] Total number of isolation cells: 0
+[05/21 13:06:30     11s] Total number of power switch cells: 0
+[05/21 13:06:30     11s] Total number of pulse generator cells: 0
+[05/21 13:06:30     11s] Total number of always on buffers: 0
+[05/21 13:06:30     11s] Total number of retention cells: 0
+[05/21 13:06:30     11s] List of usable buffers: bufbd7 buffd2 bufbdf buffda buffd3 bufbda buffd4 bufbd4 bufbd1 bufbd3 buffd7 buffd1 bufbd2
+[05/21 13:06:30     11s] Total number of usable buffers: 13
+[05/21 13:06:30     11s] List of unusable buffers:
+[05/21 13:06:30     11s] Total number of unusable buffers: 0
+[05/21 13:06:30     11s] List of usable inverters: inv0d2 inv0da invbda invbdk inv0d1 inv0d7 invbd4 inv0d0 invbd2 inv0d4 invbd7 invbdf
+[05/21 13:06:30     11s] Total number of usable inverters: 12
+[05/21 13:06:30     11s] List of unusable inverters:
+[05/21 13:06:30     11s] Total number of unusable inverters: 0
+[05/21 13:06:30     11s] List of identified usable delay cells: dl04d1 dl03d1 dl02d2 dl03d4 dl04d2 dl02d1 dl01d4 bufbdk dl04d4 dl02d4 dl01d2 dl01d1 dl03d2
+[05/21 13:06:30     11s] Total number of identified usable delay cells: 13
+[05/21 13:06:30     11s] List of identified unusable delay cells:
+[05/21 13:06:30     11s] Total number of identified unusable delay cells: 0
+[05/21 13:06:30     11s] 
+[05/21 13:06:30     11s] TimeStamp Creating Cell Server ...(0, 1, 1, 1) in restoreDesign End ...
+[05/21 13:06:30     11s] 
+[05/21 13:06:30     11s] TimeStamp Deleting Cell Server Begin ...
+[05/21 13:06:30     11s] 
+[05/21 13:06:30     11s] TimeStamp Deleting Cell Server End ...
+[05/21 13:06:30     11s] Ending "Cell type marking" (total cpu=0:00:00.0, real=0:00:00.0, peak res=1352.8M, current mem=1352.7M)
+[05/21 13:06:30     11s] 
+[05/21 13:06:30     11s] TimeStamp Creating Cell Server ...(0, 0, 0, 0) in restoreDesign Begin ...
+[05/21 13:06:30     11s] Summary for sequential cells identification: 
+[05/21 13:06:30     11s]   Identified SBFF number: 114
+[05/21 13:06:30     11s]   Identified MBFF number: 0
+[05/21 13:06:30     11s]   Identified SB Latch number: 0
+[05/21 13:06:30     11s]   Identified MB Latch number: 0
+[05/21 13:06:30     11s]   Not identified SBFF number: 6
+[05/21 13:06:30     11s]   Not identified MBFF number: 0
+[05/21 13:06:30     11s]   Not identified SB Latch number: 0
+[05/21 13:06:30     11s]   Not identified MB Latch number: 0
+[05/21 13:06:30     11s]   Number of sequential cells which are not FFs: 83
+[05/21 13:06:30     11s] 
+[05/21 13:06:30     11s] Trim Metal Layers:
+[05/21 13:06:30     11s]  Visiting view : my_analysis_view_setup
+[05/21 13:06:30     11s]    : PowerDomain = none : Weighted F : unweighted  = 50.60 (1.000) with rcCorner = 0
+[05/21 13:06:30     11s]    : PowerDomain = none : Weighted F : unweighted  = 49.40 (1.000) with rcCorner = -1
+[05/21 13:06:30     11s]  Visiting view : my_analysis_view_hold
+[05/21 13:06:30     11s]    : PowerDomain = none : Weighted F : unweighted  = 24.50 (1.000) with rcCorner = 0
+[05/21 13:06:30     11s]    : PowerDomain = none : Weighted F : unweighted  = 22.80 (1.000) with rcCorner = -1
+[05/21 13:06:30     11s] 
+[05/21 13:06:30     11s] TimeStamp Creating Cell Server ...(0, 0, 0, 0) in restoreDesign End ...
+[05/21 13:06:30     11s] 
+[05/21 13:06:30     11s] TimeStamp Deleting Cell Server Begin ...
+[05/21 13:06:30     11s] 
+[05/21 13:06:30     11s] TimeStamp Deleting Cell Server End ...
+[05/21 13:06:30     11s] Reading floorplan file - /home/vlsi3/Documents/test_automation/6_routing/alu_top_routing.enc.dat/alu_top.fp.gz (mem = 1423.8M).
+[05/21 13:06:30     11s] % Begin Load floorplan data ... (date=05/21 13:06:30, mem=1353.8M)
+[05/21 13:06:30     11s] *info: reset 144 existing net BottomPreferredLayer and AvoidDetour
+[05/21 13:06:30     11s] Deleting old partition specification.
+[05/21 13:06:30     11s] Set FPlanBox to (0 0 1291000 1291000)
+[05/21 13:06:30     11s] **WARN: (IMPFP-3961):	The techSite 'CO_MSTR_c' has no related standard cells in the LEF/OA library. The calculations for this site type cannot be made unless standard cell models of this type exist in the LEF/OA library. Ignore this warning if the SITE is not used by the library. Alternatively, remove the SITE definition for the LEF/OA library to avoid this message.
+[05/21 13:06:30     11s] Type 'man IMPFP-3961' for more detail.
+[05/21 13:06:30     11s] **WARN: (IMPFP-3961):	The techSite 'IOSite_c' has no related standard cells in the LEF/OA library. The calculations for this site type cannot be made unless standard cell models of this type exist in the LEF/OA library. Ignore this warning if the SITE is not used by the library. Alternatively, remove the SITE definition for the LEF/OA library to avoid this message.
+[05/21 13:06:30     11s] Type 'man IMPFP-3961' for more detail.
+[05/21 13:06:30     11s] Horizontal Layer M1 offset = 0 (derived)
+[05/21 13:06:30     11s] Vertical Layer M2 offset = 280 (derived)
+[05/21 13:06:30     11s] Start create_tracks
+[05/21 13:06:30     11s] Generated pitch 0.56 in M3 is different from 0.84 defined in technology file in preferred direction.
+[05/21 13:06:30     11s]  ... processed partition successfully.
+[05/21 13:06:30     11s] Reading binary special route file /home/vlsi3/Documents/test_automation/6_routing/alu_top_routing.enc.dat/alu_top.fp.spr.gz (Created by Innovus v21.15-s110_1 on Thu May 21 13:05:06 2026, version: 1)
+[05/21 13:06:30     11s] Convert 0 swires and 0 svias from compressed groups
+[05/21 13:06:30     11s] 291 swires and 50 svias were compressed
+[05/21 13:06:30     11s] 360 swires and 75 svias were decompressed from small or sparse groups
+[05/21 13:06:30     11s] Ending "Read special route file" (total cpu=0:00:00.0, real=0:00:00.0, peak res=1353.8M, current mem=1353.8M)
+[05/21 13:06:30     11s] There are 144 io inst loaded
+[05/21 13:06:30     11s] Extracting standard cell pins and blockage ...... 
+[05/21 13:06:30     11s] Pin and blockage extraction finished
+[05/21 13:06:30     11s] % End Load floorplan data ... (date=05/21 13:06:30, total cpu=0:00:00.0, real=0:00:00.0, peak res=1356.9M, current mem=1356.9M)
+[05/21 13:06:30     11s] Reading congestion map file /home/vlsi3/Documents/test_automation/6_routing/alu_top_routing.enc.dat/alu_top.route.congmap.gz ...
+[05/21 13:06:30     11s] % Begin Load SymbolTable ... (date=05/21 13:06:30, mem=1356.9M)
+[05/21 13:06:31     11s] routingBox: (360 640) (1290600 1290880)
+[05/21 13:06:31     11s] coreBox:    (270000 270000) (1021000 1021000)
+[05/21 13:06:31     11s] Un-suppress "**WARN ..." messages.
+[05/21 13:06:31     11s] % End Load SymbolTable ... (date=05/21 13:06:31, total cpu=0:00:00.0, real=0:00:01.0, peak res=1360.0M, current mem=1360.0M)
+[05/21 13:06:31     11s] Loading place ...
+[05/21 13:06:31     11s] % Begin Load placement data ... (date=05/21 13:06:31, mem=1360.0M)
+[05/21 13:06:31     11s] Reading placement file - /home/vlsi3/Documents/test_automation/6_routing/alu_top_routing.enc.dat/alu_top.place.gz.
+[05/21 13:06:31     11s] ** Reading stdCellPlacement_binary (Created by Innovus v21.15-s110_1 on Thu May 21 13:05:06 2026, version# 2) ...
+[05/21 13:06:31     11s] Read Views for adaptive view pruning ...
+[05/21 13:06:31     11s] Read 0 views from Binary DB for adaptive view pruning
+[05/21 13:06:31     11s] *** Checked 4 GNC rules.
+[05/21 13:06:31     11s] *** applyConnectGlobalNets disabled.
+[05/21 13:06:31     11s] *** Completed restorePlace (cpu=0:00:00.0 real=0:00:00.0 mem=1433.8M) ***
+[05/21 13:06:31     11s] Total net length = 2.011e+04 (1.014e+04 9.965e+03) (ext = 1.566e+04)
+[05/21 13:06:31     11s] % End Load placement data ... (date=05/21 13:06:31, total cpu=0:00:00.0, real=0:00:00.0, peak res=1365.4M, current mem=1364.5M)
+[05/21 13:06:31     11s] Reading PG file /home/vlsi3/Documents/test_automation/6_routing/alu_top_routing.enc.dat/alu_top.pg.gz, version#2, (Created by Innovus v21.15-s110_1 on       Thu May 21 13:05:06 2026)
+[05/21 13:06:31     11s] *** Completed restorePGFile (cpu=0:00:00.0 real=0:00:00.0 mem=1429.8M) ***
+[05/21 13:06:31     11s] % Begin Load routing data ... (date=05/21 13:06:31, mem=1365.3M)
+[05/21 13:06:31     11s] Reading routing file - /home/vlsi3/Documents/test_automation/6_routing/alu_top_routing.enc.dat/alu_top.route.gz.
+[05/21 13:06:31     11s] Reading Innovus routing data (Created by Innovus v21.15-s110_1 on Thu May 21 13:05:06 2026 Format: 20.1) ...
+[05/21 13:06:31     11s] *** Total 144 nets are successfully restored.
+[05/21 13:06:31     11s] *** Completed restoreRoute (cpu=0:00:00.0 real=0:00:00.0 mem=1430.8M) ***
+[05/21 13:06:31     11s] % End Load routing data ... (date=05/21 13:06:31, total cpu=0:00:00.0, real=0:00:00.0, peak res=1366.4M, current mem=1365.9M)
+[05/21 13:06:31     11s] TAT_INFO: restoreCongMap REAL = 1 : CPU = 0 : MEM = 0.
+[05/21 13:06:31     11s] Reading property file /home/vlsi3/Documents/test_automation/6_routing/alu_top_routing.enc.dat/alu_top.prop
+[05/21 13:06:31     11s] *** Completed restoreProperty (cpu=0:00:00.0 real=0:00:00.0 mem=1433.8M) ***
+[05/21 13:06:31     11s] Reading dirtyarea snapshot file /home/vlsi3/Documents/test_automation/6_routing/alu_top_routing.enc.dat/alu_top.db.da.gz (Create by Innovus v21.15-s110_1 on Thu May 21 13:05:06 2026, version: 4).
+[05/21 13:06:31     11s] Set Default Input Pin Transition as 0.1 ps.
+[05/21 13:06:31     12s] eee: readRCCornerMetaData, file read unsuccessful: /home/vlsi3/Documents/test_automation/6_routing/alu_top_routing.enc.dat/extraction/extractionMetaData.gz
+[05/21 13:06:31     12s] Extraction setup Started 
+[05/21 13:06:31     12s] 
+[05/21 13:06:31     12s] Trim Metal Layers:
+[05/21 13:06:31     12s] Initializing multi-corner RC extraction with 1 active RC Corners ...
+[05/21 13:06:31     12s] **WARN: (IMPEXT-2773):	The via resistance between layers M0 and M1 could not be determined from the LEF technology file because the via resistance specification is missing. A default of 4 Ohms will be used as via resistance between these layers.
+[05/21 13:06:31     12s] Type 'man IMPEXT-2773' for more detail.
+[05/21 13:06:31     12s] **WARN: (IMPEXT-2776):	The via resistance between layers M1 and M2 is not defined in the capacitance table file. The via resistance of 6 Ohms defined in the LEF technology file will be used as via resistance between these layers.
+[05/21 13:06:31     12s] Type 'man IMPEXT-2776' for more detail.
+[05/21 13:06:31     12s] **WARN: (IMPEXT-2776):	The via resistance between layers M2 and M3 is not defined in the capacitance table file. The via resistance of 6 Ohms defined in the LEF technology file will be used as via resistance between these layers.
+[05/21 13:06:31     12s] Type 'man IMPEXT-2776' for more detail.
+[05/21 13:06:31     12s] **WARN: (IMPEXT-2776):	The via resistance between layers M3 and M4 is not defined in the capacitance table file. The via resistance of 2.5 Ohms defined in the LEF technology file will be used as via resistance between these layers.
+[05/21 13:06:31     12s] Type 'man IMPEXT-2776' for more detail.
+[05/21 13:06:31     12s] **WARN: (IMPEXT-2766):	The sheet resistance for layer M1 is not defined in the cap table. Therefore, the LEF value 0.08 will be used instead. To avoid this message, update the relevant cap table to include the sheet resistance for the specified layer and read it back in.
+[05/21 13:06:31     12s] **WARN: (IMPEXT-2766):	The sheet resistance for layer M2 is not defined in the cap table. Therefore, the LEF value 0.08 will be used instead. To avoid this message, update the relevant cap table to include the sheet resistance for the specified layer and read it back in.
+[05/21 13:06:31     12s] **WARN: (IMPEXT-2766):	The sheet resistance for layer M3 is not defined in the cap table. Therefore, the LEF value 0.08 will be used instead. To avoid this message, update the relevant cap table to include the sheet resistance for the specified layer and read it back in.
+[05/21 13:06:31     12s] **WARN: (IMPEXT-2766):	The sheet resistance for layer M4 is not defined in the cap table. Therefore, the LEF value 0.04 will be used instead. To avoid this message, update the relevant cap table to include the sheet resistance for the specified layer and read it back in.
+[05/21 13:06:31     12s] Summary of Active RC-Corners : 
+[05/21 13:06:31     12s]  
+[05/21 13:06:31     12s]  Analysis View: my_analysis_view_setup
+[05/21 13:06:31     12s]     RC-Corner Name        : my_rc_corner_worst
+[05/21 13:06:31     12s]     RC-Corner Index       : 0
+[05/21 13:06:31     12s]     RC-Corner Temperature : 25 Celsius
+[05/21 13:06:31     12s]     RC-Corner Cap Table   : ''
+[05/21 13:06:31     12s]     RC-Corner PreRoute Res Factor         : 1
+[05/21 13:06:31     12s]     RC-Corner PreRoute Cap Factor         : 1
+[05/21 13:06:31     12s]     RC-Corner PostRoute Res Factor        : 1 {1 1 1}
+[05/21 13:06:31     12s]     RC-Corner PostRoute Cap Factor        : 1 {1 1 1}
+[05/21 13:06:31     12s]     RC-Corner PostRoute XCap Factor       : 1 {1 1 1}
+[05/21 13:06:31     12s]     RC-Corner PreRoute Clock Res Factor   : 1	[Derived from Cap Table]
+[05/21 13:06:31     12s]     RC-Corner PreRoute Clock Cap Factor   : 1	[Derived from Cap Table]
+[05/21 13:06:31     12s]     RC-Corner PostRoute Clock Cap Factor  : 1 {1 1 1} 	[Derived from postRoute_cap (effortLevel low)]
+[05/21 13:06:31     12s]     RC-Corner PostRoute Clock Res Factor  : 1 {1 1 1} 	[Derived from postRoute_res (effortLevel low)]
+[05/21 13:06:31     12s]     RC-Corner PostRoute Clock coupling capacitance Factor : 1 {1 1 1} 
+[05/21 13:06:31     12s]  
+[05/21 13:06:31     12s]  Analysis View: my_analysis_view_hold
+[05/21 13:06:31     12s]     RC-Corner Name        : my_rc_corner_worst
+[05/21 13:06:31     12s]     RC-Corner Index       : 0
+[05/21 13:06:31     12s]     RC-Corner Temperature : 25 Celsius
+[05/21 13:06:31     12s]     RC-Corner Cap Table   : ''
+[05/21 13:06:31     12s]     RC-Corner PreRoute Res Factor         : 1
+[05/21 13:06:31     12s]     RC-Corner PreRoute Cap Factor         : 1
+[05/21 13:06:31     12s]     RC-Corner PostRoute Res Factor        : 1 {1 1 1}
+[05/21 13:06:31     12s]     RC-Corner PostRoute Cap Factor        : 1 {1 1 1}
+[05/21 13:06:31     12s]     RC-Corner PostRoute XCap Factor       : 1 {1 1 1}
+[05/21 13:06:31     12s]     RC-Corner PreRoute Clock Res Factor   : 1	[Derived from Cap Table]
+[05/21 13:06:31     12s]     RC-Corner PreRoute Clock Cap Factor   : 1	[Derived from Cap Table]
+[05/21 13:06:31     12s]     RC-Corner PostRoute Clock Cap Factor  : 1 {1 1 1} 	[Derived from postRoute_cap (effortLevel low)]
+[05/21 13:06:31     12s]     RC-Corner PostRoute Clock Res Factor  : 1 {1 1 1} 	[Derived from postRoute_res (effortLevel low)]
+[05/21 13:06:31     12s]     RC-Corner PostRoute Clock coupling capacitance Factor : 1 {1 1 1} 
+[05/21 13:06:31     12s] 
+[05/21 13:06:31     12s] Trim Metal Layers:
+[05/21 13:06:31     12s] LayerId::1 widthSet size::1
+[05/21 13:06:31     12s] LayerId::2 widthSet size::1
+[05/21 13:06:31     12s] LayerId::3 widthSet size::1
+[05/21 13:06:31     12s] LayerId::4 widthSet size::1
+[05/21 13:06:31     12s] eee: pegSigSF::1.070000
+[05/21 13:06:31     12s] Initializing multi-corner resistance tables ...
+[05/21 13:06:31     12s] eee: l::1 avDens::0.110837 usedTrk::1894.433928 availTrk::17092.012131 sigTrk::1894.433928
+[05/21 13:06:31     12s] eee: l::2 avDens::0.051875 usedTrk::218.182233 availTrk::4205.888176 sigTrk::218.182233
+[05/21 13:06:31     12s] eee: l::3 avDens::0.017164 usedTrk::247.147143 availTrk::14398.780900 sigTrk::247.147143
+[05/21 13:06:31     12s] eee: l::4 avDens::0.048576 usedTrk::713.494643 availTrk::14688.151050 sigTrk::713.494643
+[05/21 13:06:31     12s] eee: LAM: n=40 LLS=2-2 HLS=4-4 rDens=0.000000 uaWl=1.000000 uaWlH=0.509758 aWlH=0.000000 lMod=0 pMax=0.897700 pMod=79 wcR=0.600000 newSi=0.001600 wHLS=1.500000 siPrev=0 viaL=0.000000
+[05/21 13:06:31     12s] Start generating vias ..
+[05/21 13:06:31     12s] #create default rule from bind_ndr_rule rule=0x7fc98a36a320 0x7fc961be2018
+[05/21 13:06:31     12s] ### import design signature (1): route=1 fixed_route=1 flt_obj=0 vio=1905142130 swire=1 shield_wire=1 net_attr=1 dirty_area=0 del_dirty_area=0 cell=0 placement=0 pin_access=1 inst_pattern=1
+[05/21 13:06:31     12s] #Skip building auto via since it is not turned on.
+[05/21 13:06:31     12s] Extracting standard cell pins and blockage ...... 
+[05/21 13:06:31     12s] Pin and blockage extraction finished
+[05/21 13:06:31     12s] Via generation completed.
+[05/21 13:06:31     12s] % Begin Load power constraints ... (date=05/21 13:06:31, mem=1374.3M)
+[05/21 13:06:31     12s] % End Load power constraints ... (date=05/21 13:06:31, total cpu=0:00:00.0, real=0:00:00.0, peak res=1381.4M, current mem=1381.4M)
+[05/21 13:06:31     12s] % Begin load AAE data ... (date=05/21 13:06:31, mem=1403.4M)
+[05/21 13:06:32     12s] AAE DB initialization (MEM=1492.97 CPU=0:00:00.0 REAL=0:00:00.0) 
+[05/21 13:06:32     12s] % End load AAE data ... (date=05/21 13:06:32, total cpu=0:00:00.4, real=0:00:01.0, peak res=1411.9M, current mem=1411.9M)
+[05/21 13:06:32     12s] 
+[05/21 13:06:32     12s] TimeStamp Creating Cell Server ...(0, 1, 1, 1) in restoreDesign Begin ...
+[05/21 13:06:32     12s] Summary for sequential cells identification: 
+[05/21 13:06:32     12s]   Identified SBFF number: 114
+[05/21 13:06:32     12s]   Identified MBFF number: 0
+[05/21 13:06:32     12s]   Identified SB Latch number: 0
+[05/21 13:06:32     12s]   Identified MB Latch number: 0
+[05/21 13:06:32     12s]   Not identified SBFF number: 6
+[05/21 13:06:32     12s]   Not identified MBFF number: 0
+[05/21 13:06:32     12s]   Not identified SB Latch number: 0
+[05/21 13:06:32     12s]   Not identified MB Latch number: 0
+[05/21 13:06:32     12s]   Number of sequential cells which are not FFs: 83
+[05/21 13:06:32     12s] Total number of combinational cells: 321
+[05/21 13:06:32     12s] Total number of sequential cells: 203
+[05/21 13:06:32     12s] Total number of tristate cells: 10
+[05/21 13:06:32     12s] Total number of level shifter cells: 0
+[05/21 13:06:32     12s] Total number of power gating cells: 0
+[05/21 13:06:32     12s] Total number of isolation cells: 0
+[05/21 13:06:32     12s] Total number of power switch cells: 0
+[05/21 13:06:32     12s] Total number of pulse generator cells: 0
+[05/21 13:06:32     12s] Total number of always on buffers: 0
+[05/21 13:06:32     12s] Total number of retention cells: 0
+[05/21 13:06:32     12s] List of usable buffers: bufbd7 buffd2 bufbdf buffda buffd3 bufbda buffd4 bufbd4 bufbd1 bufbd3 buffd7 buffd1 bufbd2
+[05/21 13:06:32     12s] Total number of usable buffers: 13
+[05/21 13:06:32     12s] List of unusable buffers:
+[05/21 13:06:32     12s] Total number of unusable buffers: 0
+[05/21 13:06:32     12s] List of usable inverters: inv0d2 inv0da invbda invbdk inv0d1 inv0d7 invbd4 inv0d0 invbd2 inv0d4 invbd7 invbdf
+[05/21 13:06:32     12s] Total number of usable inverters: 12
+[05/21 13:06:32     12s] List of unusable inverters:
+[05/21 13:06:32     12s] Total number of unusable inverters: 0
+[05/21 13:06:32     12s] List of identified usable delay cells: dl04d1 dl03d1 dl02d2 dl03d4 dl04d2 dl02d1 dl01d4 bufbdk dl04d4 dl02d4 dl01d2 dl01d1 dl03d2
+[05/21 13:06:32     12s] Total number of identified usable delay cells: 13
+[05/21 13:06:32     12s] List of identified unusable delay cells:
+[05/21 13:06:32     12s] Total number of identified unusable delay cells: 0
+[05/21 13:06:32     12s] 
+[05/21 13:06:32     12s] TimeStamp Creating Cell Server ...(0, 1, 1, 1) in restoreDesign End ...
+[05/21 13:06:32     12s] 
+[05/21 13:06:32     12s] TimeStamp Deleting Cell Server Begin ...
+[05/21 13:06:32     12s] 
+[05/21 13:06:32     12s] TimeStamp Deleting Cell Server End ...
+[05/21 13:06:32     12s] **WARN: (IMPCTE-107):	The following globals have been obsoleted since version . They will be removed in the next release. 
+[05/21 13:06:32     12s] timing_enable_separate_device_slew_effect_sensitivities
+[05/21 13:06:32     12s] #% End load design ... (date=05/21 13:06:32, total cpu=0:00:02.3, real=0:00:03.0, peak res=1433.9M, current mem=1411.8M)
+[05/21 13:06:32     12s] 
+[05/21 13:06:32     12s] *** Summary of all messages that are not suppressed in this session:
+[05/21 13:06:32     12s] Severity  ID               Count  Summary                                  
+[05/21 13:06:32     12s] WARNING   IMPLF-200           49  Pin '%s' in macro '%s' has no ANTENNAGAT...
+[05/21 13:06:32     12s] WARNING   IMPFP-3961           4  The techSite '%s' has no related standar...
+[05/21 13:06:32     12s] WARNING   IMPEXT-2766          4  The sheet resistance for layer %s is not...
+[05/21 13:06:32     12s] WARNING   IMPEXT-2773          1  The via resistance between layers %s and...
+[05/21 13:06:32     12s] WARNING   IMPEXT-2776          3  The via resistance between layers %s and...
+[05/21 13:06:32     12s] WARNING   IMPCK-8086           1  The command %s is obsolete and will be r...
+[05/21 13:06:32     12s] WARNING   IMPVL-159         1435  Pin '%s' of cell '%s' is defined in LEF ...
+[05/21 13:06:32     12s] WARNING   IMPOPT-3602          1  The specified path group name %s is not ...
+[05/21 13:06:32     12s] WARNING   IMPCTE-107           1  The following globals have been obsolete...
+[05/21 13:06:32     12s] WARNING   IMPTCM-77            1  Option "%s" for command %s is obsolete a...
+[05/21 13:06:32     12s] *** Message Summary: 1500 warning(s), 0 error(s)
+[05/21 13:06:32     12s] 
+[05/21 13:06:32     12s] <CMD> setDrawView fplan
+[05/21 13:06:32     12s] <CMD> encMessage warning 1
+[05/21 13:06:32     12s] <CMD> encMessage debug 0
+[05/21 13:06:33     12s] <CMD> setDrawView place
+[05/21 13:06:49     13s] <CMD> fit
+[05/21 13:07:01     14s] 
+--------------------------------------------------------------------------------
+Exiting Innovus on Thu May 21 13:07:01 2026
+  Total CPU time:     0:00:15
+  Total real time:    0:00:58
+  Peak memory (main): 1527.57MB
+
+[05/21 13:07:01     14s] 
+[05/21 13:07:01     14s] *** Memory Usage v#1 (Current mem = 1655.648M, initial mem = 483.879M) ***
+[05/21 13:07:01     14s] 
+[05/21 13:07:01     14s] *** Summary of all messages that are not suppressed in this session:
+[05/21 13:07:01     14s] Severity  ID               Count  Summary                                  
+[05/21 13:07:01     14s] WARNING   IMPLF-200           49  Pin '%s' in macro '%s' has no ANTENNAGAT...
+[05/21 13:07:01     14s] WARNING   IMPFP-3961           4  The techSite '%s' has no related standar...
+[05/21 13:07:01     14s] WARNING   IMPEXT-2766          4  The sheet resistance for layer %s is not...
+[05/21 13:07:01     14s] WARNING   IMPEXT-2773          1  The via resistance between layers %s and...
+[05/21 13:07:01     14s] WARNING   IMPEXT-2776          3  The via resistance between layers %s and...
+[05/21 13:07:01     14s] WARNING   IMPCK-8086           1  The command %s is obsolete and will be r...
+[05/21 13:07:01     14s] WARNING   IMPVL-159         1435  Pin '%s' of cell '%s' is defined in LEF ...
+[05/21 13:07:01     14s] WARNING   IMPOPT-3602          1  The specified path group name %s is not ...
+[05/21 13:07:01     14s] WARNING   IMPCTE-107           1  The following globals have been obsolete...
+[05/21 13:07:01     14s] WARNING   IMPTCM-77            1  Option "%s" for command %s is obsolete a...
+[05/21 13:07:01     14s] *** Message Summary: 1500 warning(s), 0 error(s)
+[05/21 13:07:01     14s] 
+[05/21 13:07:01     14s] --- Ending "Innovus" (totcpu=0:00:14.4, real=0:00:57.0, mem=1655.6M) ---
